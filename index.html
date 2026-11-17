@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spellinglab – algemene spelling Nederlands</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1b2340; --ink2:#46506e; --paper:#fbf7ef; --card:#ffffff; --line:#1b2340;
+  --ok:#1f9d6b; --okbg:#e3f7ee; --bad:#d6453d; --badbg:#fde8e6; --warn:#c77700; --warnbg:#fff3dc;
+  --acc:#ff6b5b; --radius:18px; --shadow:4px 4px 0 var(--ink);
+  --serif:"Fraunces", Georgia, "Times New Roman", serif;
+  --sans:"Nunito Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--paper);font-size:17px;line-height:1.55;
+  background-image:radial-gradient(rgba(27,35,64,.07) 1px, transparent 1px);background-size:22px 22px}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);line-height:1.15;margin:0 0 .4em}
+h1{font-size:clamp(2rem,5vw,3.3rem);font-weight:800;letter-spacing:-.01em}
+h2{font-size:clamp(1.5rem,3vw,2.1rem);font-weight:800}
+h3{font-size:1.2rem;font-weight:600}
+p{margin:.3em 0 .8em}
+button{font-family:inherit;font-size:inherit;color:inherit}
+:focus-visible{outline:3px solid #3d9be9;outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+/* ---------- header ---------- */
+header.top{position:sticky;top:0;z-index:50;background:rgba(251,247,239,.92);backdrop-filter:blur(8px);border-bottom:2px solid var(--ink)}
+.top .wrap{display:flex;align-items:center;gap:18px;height:66px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--serif);font-weight:800;font-size:1.35rem}
+.logo .mark{width:38px;height:38px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:1.2rem;box-shadow:2px 2px 0 #ff6b5b}
+nav.main{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+nav.main a{text-decoration:none;font-weight:700;padding:7px 12px;border-radius:999px;font-size:.95rem}
+nav.main a:hover,nav.main a.on{background:var(--ink);color:#fff}
+.xp{display:flex;align-items:center;gap:8px;border:2px solid var(--ink);border-radius:999px;padding:4px 12px 4px 6px;background:#fff;font-weight:800;font-size:.85rem;white-space:nowrap}
+.xp .lvl{background:#f2b134;border-radius:999px;padding:2px 8px}
+.xp .bar{width:70px;height:8px;border-radius:9px;background:#eee;overflow:hidden;border:1px solid var(--ink)}
+.xp .bar i{display:block;height:100%;background:linear-gradient(90deg,#2fbf8f,#3d9be9);width:0;transition:width .6s}
+@media (max-width:820px){ nav.main a{padding:6px 8px;font-size:.85rem} .xp .bar{display:none} .top .wrap{height:auto;flex-wrap:wrap;padding-top:8px;padding-bottom:8px} header.top{position:static} }
+
+/* ---------- generic blocks ---------- */
+.card{background:var(--card);border:2px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px}
+.pill{display:inline-flex;align-items:center;gap:6px;border:2px solid var(--ink);border-radius:999px;padding:3px 11px;font-weight:800;font-size:.8rem;background:#fff}
+.btn{display:inline-flex;align-items:center;gap:8px;cursor:pointer;border:2px solid var(--ink);border-radius:999px;padding:9px 18px;font-weight:800;background:#fff;box-shadow:3px 3px 0 var(--ink);transition:transform .08s, box-shadow .08s;text-decoration:none}
+.btn:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink)}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.btn.dark{background:var(--ink);color:#fff;box-shadow:3px 3px 0 var(--acc)}
+.btn.acc{background:var(--acc);color:#fff}
+.btn.small{padding:6px 13px;font-size:.88rem}
+.grid{display:grid;gap:20px}
+.muted{color:var(--ink2)}
+section.block{padding:42px 0}
+.kicker{font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:.78rem;color:var(--ink2)}
+
+/* ---------- home ---------- */
+.hero{padding:54px 0 30px;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.3fr .9fr;gap:34px;align-items:center}
+@media (max-width:860px){.hero-grid{grid-template-columns:1fr}}
+.hero h1 em{font-style:normal;background:linear-gradient(transparent 62%, #f2b134 62%);padding:0 4px}
+.mission{position:relative;background:var(--ink);color:#fff;border-radius:22px;padding:24px;box-shadow:6px 6px 0 #ff6b5b;transform:rotate(1.2deg)}
+.mission h3{color:#f2b134}
+.mission ul{margin:.4em 0 0;padding-left:1.1em}
+.mission .stamp{position:absolute;top:-18px;right:-12px;background:#ff6b5b;color:#fff;border:2px solid #fff;border-radius:50%;width:78px;height:78px;display:grid;place-items:center;text-align:center;font-weight:800;font-size:.72rem;line-height:1.1;transform:rotate(12deg)}
+.steps{grid-template-columns:repeat(3,1fr)}
+@media (max-width:760px){.steps{grid-template-columns:1fr}}
+.step .n{font-family:var(--serif);font-size:2.2rem;font-weight:800;color:var(--acc);line-height:1}
+.labgrid{grid-template-columns:repeat(4,1fr)}
+@media (max-width:980px){.labgrid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.labgrid{grid-template-columns:1fr}}
+.labcard{text-decoration:none;display:flex;flex-direction:column;gap:6px;position:relative;overflow:hidden;transition:transform .12s}
+.labcard:hover{transform:translate(-2px,-3px) rotate(-.4deg)}
+.labcard .top{display:flex;justify-content:space-between;align-items:flex-start}
+.labcard .icon{width:52px;height:52px;border-radius:14px;background:var(--acc);display:grid;place-items:center;font-size:1.6rem;border:2px solid var(--ink)}
+.labcard .num{font-family:var(--serif);font-weight:800;font-size:2.4rem;color:var(--acc);opacity:.35;line-height:1}
+.labcard h3{margin:.35em 0 0}
+.labcard .sub{font-size:.9rem;color:var(--ink2)}
+.prog{height:9px;border-radius:9px;border:1.5px solid var(--ink);background:#f1eee6;overflow:hidden;margin-top:auto}
+.prog i{display:block;height:100%;background:var(--acc);width:0;transition:width .5s}
+.badge-done{position:absolute;right:12px;bottom:22px;font-size:1.5rem;transform:rotate(-12deg)}
+.special{grid-template-columns:1fr 1fr}
+@media (max-width:760px){.special{grid-template-columns:1fr}}
+.bronnen{grid-template-columns:repeat(3,1fr)}
+@media (max-width:860px){.bronnen{grid-template-columns:1fr}}
+.bron{display:flex;flex-direction:column;gap:6px;text-decoration:none}
+.bron .go{margin-top:auto;font-weight:800;color:#3d9be9}
+
+/* ---------- lab page ---------- */
+.labhero{background:var(--acc);border-bottom:2px solid var(--ink);padding:34px 0 30px;position:relative;overflow:hidden}
+.labhero:after{content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;border-radius:50%;border:40px solid rgba(255,255,255,.18)}
+.labhero .crumb{font-weight:800;text-decoration:none;font-size:.9rem;background:#fff;border:2px solid var(--ink);border-radius:999px;padding:4px 12px}
+.labhero h1{margin-top:16px;color:var(--ink)}
+.labhero .lead{max-width:760px;font-size:1.08rem;font-weight:600}
+.labhero .bignum{position:absolute;right:30px;bottom:-30px;font-family:var(--serif);font-weight:800;font-size:11rem;opacity:.16;line-height:1}
+.subnav{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.rules{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.rule{position:relative;padding-top:26px}
+.rule .tag{position:absolute;top:-14px;left:16px;background:var(--acc);border:2px solid var(--ink);border-radius:10px;padding:2px 10px;font-weight:800;font-size:.85rem;transform:rotate(-2deg)}
+.rule .ex{background:#f6f3ec;border-radius:10px;padding:8px 12px;margin:8px 0;font-size:.95rem}
+.rule .ex b{font-weight:800}
+.rule .maar{border:2px dashed var(--warn);background:var(--warnbg);border-radius:10px;padding:8px 12px;font-size:.93rem}
+.rule .maar:before{content:"⚠️ maar: ";font-weight:800}
+.zoek{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;background:#fff;border:2px dashed var(--ink);border-radius:var(--radius);padding:20px}
+.zoek .lens{font-size:2.6rem;line-height:1}
+.zoek .links{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.spb{display:inline-flex;align-items:center;gap:6px;background:#e9f2ff;border:2px solid #3d9be9;border-radius:999px;padding:3px 11px;font-weight:800;font-size:.82rem;color:#1d5fa0}
+.labnav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:34px}
+
+/* ---------- exercises ---------- */
+.ex-panel{margin-top:26px;padding:24px}
+.ex-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap;margin-bottom:6px}
+.ex-head .type{font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;background:var(--acc);color:var(--ink);border:2px solid var(--ink);border-radius:8px;padding:2px 8px}
+.ex-head .score{font-weight:800}
+.instr{color:var(--ink2);font-weight:600}
+.src{font-size:.8rem;color:var(--ink2);font-style:italic}
+.ex-foot{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:16px}
+.result{display:none;margin-top:14px;border:2px solid var(--ink);border-radius:14px;padding:12px 16px;font-weight:700;position:relative;overflow:visible}
+.result.show{display:block;animation:pop .35s}
+.result.good{background:var(--okbg)} .result.mid{background:var(--warnbg)} .result.low{background:var(--badbg)}
+.result .stampx{position:absolute;right:14px;top:-16px;background:var(--ok);color:#fff;border:2px solid var(--ink);border-radius:8px;padding:2px 10px;transform:rotate(6deg);font-family:var(--serif);font-weight:800}
+@keyframes pop{0%{transform:scale(.96);opacity:0}100%{transform:scale(1);opacity:1}}
+
+/* mc */
+.mcq{border-top:1.5px dashed #d8d2c4;padding:14px 0}
+.mcq:first-of-type{border-top:0}
+.mcq .q{font-weight:800;margin-bottom:8px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{cursor:pointer;border:2px solid var(--ink);background:#fff;border-radius:12px;padding:8px 14px;text-align:left;font-weight:600;transition:background .1s}
+.opt:hover:not(:disabled){background:#f3efe5}
+.opt:disabled{cursor:default}
+.opt.right{background:var(--okbg);border-color:var(--ok);font-weight:800}
+.opt.wrong{background:var(--badbg);border-color:var(--bad);text-decoration:line-through}
+.opts.col{flex-direction:column;align-items:stretch}
+.fb{margin-top:8px;font-size:.93rem;border-left:4px solid var(--ok);padding:4px 10px;background:#f7fbf9;display:none}
+.fb.show{display:block}
+.fb.no{border-color:var(--bad);background:#fff7f6}
+.letop{margin-top:6px;font-size:.88rem;border:2px dashed var(--warn);background:var(--warnbg);border-radius:10px;padding:6px 10px}
+.letop:before{content:"📌 Let op: ";font-weight:800}
+
+/* gap / choice */
+.gaptext{font-size:1.04rem;line-height:2.25}
+.gaptext .line{display:block;padding:2px 0;border-bottom:1px dashed #e6e0d2}
+.gaptext input{font:inherit;font-weight:700;border:0;border-bottom:2.5px solid var(--ink);background:#fff8e8;border-radius:6px 6px 0 0;padding:1px 6px;min-width:70px;color:var(--ink)}
+.gaptext input.ok{background:var(--okbg);border-color:var(--ok)}
+.gaptext input.no{background:var(--badbg);border-color:var(--bad)}
+.gaptext select{font:inherit;font-weight:700;border:2px solid var(--ink);border-radius:8px;padding:1px 4px;background:#fff8e8;color:var(--ink);cursor:pointer}
+.gaptext select.ok{background:var(--okbg);border-color:var(--ok)}
+.gaptext select.no{background:var(--badbg);border-color:var(--bad)}
+.sol{font-size:.82rem;font-weight:800;color:var(--ok);background:var(--okbg);border-radius:6px;padding:0 6px;margin-left:4px;white-space:nowrap}
+
+/* sort */
+.pool{display:flex;flex-wrap:wrap;gap:8px;min-height:52px;padding:12px;border:2px dashed #cfc8b8;border-radius:14px;background:#fdfcf8}
+.chip{cursor:grab;user-select:none;border:2px solid var(--ink);border-radius:999px;padding:5px 13px;background:#fff;font-weight:700;box-shadow:2px 2px 0 var(--ink)}
+.chip.sel{background:#f2b134;transform:translateY(-2px)}
+.chip.ok{background:var(--okbg);border-color:var(--ok)}
+.chip.no{background:var(--badbg);border-color:var(--bad)}
+.chip small{display:block;font-size:.75rem;font-weight:800;color:var(--ok)}
+.buckets{display:grid;gap:12px;margin-top:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.bucket{border:2px solid var(--ink);border-radius:14px;min-height:120px;padding:10px;background:#fff;cursor:pointer;transition:background .1s}
+.bucket.hot{background:#fff4d6}
+.bucket h4{margin:0 0 8px;font-size:.95rem}
+.bucket .in{display:flex;flex-wrap:wrap;gap:6px}
+
+/* match */
+.match{display:grid;grid-template-columns:1fr 1fr;gap:12px 22px}
+@media (max-width:600px){.match{grid-template-columns:1fr}}
+.mcol{display:flex;flex-direction:column;gap:8px}
+.mitem{cursor:pointer;border:2px solid var(--ink);border-radius:12px;padding:8px 12px;background:#fff;font-weight:700;text-align:left;display:flex;gap:8px;align-items:center}
+.mitem .dot{flex:0 0 auto;width:24px;height:24px;border-radius:50%;border:2px solid var(--ink);display:grid;place-items:center;font-size:.75rem;font-weight:800;background:#fff}
+.mitem.sel{background:#f2b134}
+.mitem.ok{background:var(--okbg);border-color:var(--ok)}
+.mitem.no{background:var(--badbg);border-color:var(--bad)}
+
+/* spot */
+.spot{font-size:1.06rem;line-height:2.1;background:#fff;border:2px solid #e3ddcf;border-radius:14px;padding:16px 18px}
+.spot .mailhead{font-size:.85rem;color:var(--ink2);border-bottom:1px solid #e3ddcf;margin-bottom:8px;padding-bottom:6px;line-height:1.5}
+.tok{cursor:pointer;border-radius:5px;padding:1px 2px;transition:background .1s}
+.tok:hover{background:#f6f0de}
+.tok.mark{background:#ffe08a;box-shadow:inset 0 -3px 0 #f2b134}
+.tok.hit{background:var(--okbg);box-shadow:inset 0 -3px 0 var(--ok)}
+.tok.miss{background:var(--warnbg);box-shadow:inset 0 -3px 0 var(--warn)}
+.tok.fp{background:var(--badbg);text-decoration:line-through}
+.tok .fix{font-size:.75rem;font-weight:800;color:var(--ok);margin-left:3px}
+.tok.miss .fix{color:var(--warn)}
+
+/* exit */
+.self{display:grid;gap:8px}
+.selfrow{display:flex;justify-content:space-between;align-items:center;gap:10px;border-bottom:1px dashed #e3ddcf;padding:6px 0;flex-wrap:wrap}
+.faces{display:flex;gap:6px}
+.face{cursor:pointer;border:2px solid var(--ink);background:#fff;border-radius:10px;padding:2px 10px;font-size:1.2rem}
+.face.on{background:#f2b134}
+textarea,input.txt{font:inherit;width:100%;border:2px solid var(--ink);border-radius:12px;padding:10px;background:#fff}
+.ticket{border:2px solid var(--ink);border-radius:18px;background:#fff;box-shadow:6px 6px 0 var(--ink);overflow:hidden;display:none}
+.ticket.show{display:block;animation:pop .4s}
+.ticket .th{background:var(--ink);color:#fff;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.ticket .tb{padding:18px 20px;display:grid;gap:10px}
+.ticket .perf{border-top:3px dashed #d8d2c4}
+.bigscore{font-family:var(--serif);font-weight:800;font-size:2.6rem;line-height:1}
+
+/* teacher */
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th,td{border:1.5px solid var(--ink);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#f2b134}
+.tablewrap{overflow-x:auto}
+
+footer{border-top:2px solid var(--ink);margin-top:50px;padding:24px 0;font-size:.88rem;color:var(--ink2)}
+
+/* confetti */
+.conf{position:fixed;top:-10px;width:10px;height:14px;z-index:999;pointer-events:none;animation:fall 1.6s ease-in forwards;border-radius:2px}
+@keyframes fall{to{transform:translateY(105vh) rotate(720deg);opacity:.8}}
+@media (prefers-reduced-motion:reduce){.conf{display:none}*{transition:none!important;animation:none!important}}
+.hide{display:none!important}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#home"><span class="mark">🔎</span>Spellinglab</a>
+    <nav class="main" aria-label="Hoofdmenu">
+      <a href="#home" data-nav="home">Start</a>
+      <a href="#labs" data-nav="labs">Labs</a>
+      <a href="#eindbaas" data-nav="eindbaas">Eindbaas</a>
+      <a href="#exit" data-nav="exit">Exit ticket</a>
+      <a href="#leraar" data-nav="leraar">Voor de leraar</a>
+    </nav>
+    <div class="xp" title="Je ervaringspunten">
+      <span class="lvl" id="lvl">Leerling-speurder</span>
+      <span class="bar"><i id="xpbar"></i></span>
+      <span id="xpnum">0 XP</span>
+    </div>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<footer>
+  <div class="wrap">
+    Spellinglab · Algemene spelling (zonder werkwoordspelling) · Nederlands 3de graad D/A-finaliteit (III-Ned-da).
+    Regels gebaseerd op de theoriegids <em>Basisdoelstellingen 2 – Algemene spelling</em> en de officiële brochure
+    <em>Spel(d/t)brood? De regels op een rij</em> van Team Taaladvies (Vlaamse overheid). Bij twijfel geldt de
+    <a href="https://woordenlijst.org" target="_blank" rel="noopener">Woordenlijst</a>.
+  </div>
+</footer>
+
+<script>
+/* =========================================================
+   DATA
+   ========================================================= */
+const LINKS = {
+  regels: "https://www.vlaanderen.be/team-taaladvies/spellingregels",
+  publicaties: "https://www.vlaanderen.be/team-taaladvies/publicaties",
+  woordenlijst: "https://woordenlijst.org"
+};
+
+const LABS = [
+/* ---------------- 1. HOOFDLETTERS ---------------- */
+{
+  id:"hoofdletters", nr:1, title:"Hoofdletters", icon:"🔠", color:"#ff7a6b",
+  sub:"Eigennaam of soortnaam?",
+  lead:"Een hoofdletter geef je aan het begin van een zin, aan eigennamen en uit respect. De kernvraag is telkens: gaat het om iets unieks (eigennaam) of om een soort (soortnaam)?",
+  spelbrood:"regels 71–142",
+  cards:[
+    {t:"Begin van een zin", r:"Het eerste woord van een zin krijgt een hoofdletter, ook in directe rede en in de aanhef van een brief.",
+     ex:"<b>Ik</b> vind je geweldig. · Hij vroeg: ‘<b>W</b>aar ben je?’ · <b>L</b>ieve oma",
+     m:"Begint de zin met ’s of ’t? Dan krijgt het tweede woord de hoofdletter: ’s <b>M</b>orgens ben ik moe. Begint de zin met een cijfer of symbool: geen hoofdletter (2 keuzes is niet veel). Na een dubbelepunt schrijf je klein, behalve bij directe rede."},
+    {t:"Eigennaam of soortnaam", r:"Een eigennaam verwijst naar iets unieks en krijgt een hoofdletter. Een soortnaam (je kunt er ‘een’ voor zetten) schrijf je klein.",
+     ex:"<b>H</b>ugo <b>C</b>laus, <b>L</b>euven, <b>P</b>roximus ↔ een dichter, een stad, een bedrijf",
+     m:"Een persoonsnaam die een soort wordt, schrijf je klein: een casanova, alzheimer, een diesel, een dieselmotor. Maar een kunstwerk of merkproduct krijgt een hoofdletter: een <b>R</b>embrandt, de nieuwe <b>P</b>otter."},
+    {t:"Plaatsen, talen en volkeren", r:"Namen van plaatsen, talen, dialecten en volkeren (en wat ervan is afgeleid) krijgen een hoofdletter.",
+     ex:"<b>W</b>est-<b>V</b>laanderen, <b>W</b>est-<b>V</b>laams, een <b>L</b>euvenaar, <b>F</b>ranstalig, de <b>N</b>oren, <b>B</b>russel-<b>Z</b>uid",
+     m:"Windstreken schrijf je klein: het noorden van Italië, oosterse wijsheid. Bedoel je een gebied, dan wel: het rijke <b>Z</b>uiden, het <b>V</b>erre <b>O</b>osten. Producten zijn soortnamen: champagne, gouda, een labrador."},
+    {t:"Geloof en heilige namen", r:"Namen van God, heiligen, heilige begrippen en heilige boeken krijgen een hoofdletter, ook in samenstellingen.",
+     ex:"<b>G</b>od, de <b>H</b>eilige <b>G</b>eest, <b>S</b>int-<b>A</b>ntonius, de <b>B</b>ijbel, een <b>B</b>ijbellezing, de <b>K</b>oran",
+     m:"Aanhangers en stromingen schrijf je klein: een christen, moslims, joden, de islam, het jodendom, een jezuïet. Een exemplaar is een soortnaam: een mooi uitgegeven bijbel."},
+    {t:"Tijd, feesten en geschiedenis", r:"Officiële feestdagen en unieke historische gebeurtenissen krijgen een hoofdletter.",
+     ex:"<b>K</b>erstmis, <b>P</b>asen, <b>N</b>ieuwjaar, <b>M</b>oederdag, de <b>T</b>weede <b>W</b>ereldoorlog",
+     m:"Samenstellingen met feestdagen zijn klein: kerstboom, paasei, moederdagcadeau. Ook dagen, maanden, seizoenen en periodes: maandag, januari, lente, de middeleeuwen, de ramadan."},
+    {t:"Instanties, merken en titels", r:"Namen van instellingen, bedrijven, merken, evenementen en prijzen krijgen een hoofdletter.",
+     ex:"het <b>V</b>laams <b>P</b>arlement, <b>D</b>e <b>S</b>tandaard, <b>P</b>ukkelpop, de <b>N</b>obelprijs, een <b>O</b>scar",
+     m:"Volg de schrijfwijze van de naamgever: bpost, eBay. In een titel krijgt alleen het eerste woord een hoofdletter: <b>H</b>et verdriet van België. Een ministerie zonder officiële naam is klein: een Duits ministerie."},
+    {t:"Uit respect", r:"Officiële aansprekingen en protocollaire titels krijgen hoofdletters.",
+     ex:"<b>Z</b>ijne <b>M</b>ajesteit, <b>H</b>are <b>M</b>ajesteit, <b>U</b>we <b>E</b>xcellentie, <b>S</b>ire",
+     m:"Volgt er een naam of bedoel je de functie? Dan klein: koning Filip, de paus, de premier, mevrouw Peeters. Ook u en uw schrijf je klein. In de aanhef: <b>G</b>eachte heer Janssens."},
+    {t:"Letters in woorden", r:"Geeft de hoofdletter de vorm of een rangorde aan, dan blijft die hoofdletter staan.",
+     ex:"<b>T</b>-shirt, <b>L</b>-vorm, <b>X</b>-benen, <b>B</b>-attest",
+     m:"Afgesproken symbolen of afkortingen blijven klein: e-mail, x-as, pH-waarde."}
+  ],
+  zoek:{q:"Zoek in de brochure <em>Spel(d/t)brood?</em> regel 101 en 102 op. Leg in je eigen woorden uit waarom je ‘het noorden van Italië’ schrijft, maar ‘het rijke Zuiden’.", links:["publicaties","regels"]},
+  ex:[
+    {type:"mc", title:"Welke versie is correct gespeld?", src:"Bundel – Hoofdletters, oefening 1",
+     instr:"Kies telkens de enige juiste schrijfwijze.",
+     items:[
+      {q:"Wie bedacht het brailleschrift?", o:["De uitvinder van het Brailleschrift is meneer Braille.","De uitvinder van het brailleschrift is meneer braille.","De uitvinder van het Brailleschrift is meneer braille.","De uitvinder van het brailleschrift is meneer Braille."], a:3, col:true,
+       u:"‘brailleschrift’ is een samenstelling met de naam van een uitvinder: een soortnaam, dus klein. ‘Braille’ als persoon blijft een eigennaam."},
+      {q:"Windstreek of gebied?", o:["In het zuiden ligt het rijke zuiden.","In het Zuiden ligt het rijke Zuiden.","In het zuiden ligt het rijke Zuiden.","In het Zuiden ligt het rijke zuiden."], a:2, col:true,
+       u:"De windstreek schrijf je klein (in het zuiden). Het rijke Zuiden verwijst naar een economisch gebied: hoofdletter."},
+      {q:"De zeevogel heet …", o:["Jan-van-gent","jan-van-gent","Jan-Van-Gent","jan-van-Gent"], a:1,
+       u:"De vogel is een soortnaam: helemaal klein, met koppeltekens (een samenkoppeling).",
+       let:"In de verbetersleutel van de bundel staat ‘Jan-Van-Gent’ als juist. Volgens de Woordenlijst schrijf je de vogel als soortnaam klein: jan-van-gent."},
+      {q:"Welke zin is correct?", o:["’s Morgens drink ik koffie.","’S morgens drink ik koffie.","’s morgens drink ik koffie."], a:0,
+       u:"Begint de zin met ’s of ’t, dan krijgt het tweede woord de hoofdletter."},
+      {q:"Welke zin is correct?", o:["Vandaag hadden we drie vakken: wiskunde, chemie en Frans.","Vandaag hadden we drie vakken: Wiskunde, chemie en Frans.","Vandaag hadden we drie vakken: wiskunde, chemie en frans."], a:0,
+       u:"Na een dubbelepunt schrijf je klein. ‘Frans’ is een taal: altijd een hoofdletter."}
+     ]},
+    {type:"sort", title:"Groen of rood?", src:"Bundel – Hoofdletters, oefening 2",
+     instr:"Klik op een woord en daarna op het juiste vak (slepen mag ook). Groen = met hoofdletter, rood = zonder hoofdletter.",
+     cats:[{id:"g",label:"🟢 Met hoofdletter"},{id:"r",label:"🔴 Zonder hoofdletter"}],
+     items:[
+      {w:"gotisch",c:"r",fix:"gotisch"},
+      {w:"hare majesteit",c:"g",fix:"Hare Majesteit"},
+      {w:"de koningin",c:"r",fix:"de koningin",let:"In de bundel staan ‘hare majesteit de koningin’ samen in één vak. ‘Hare Majesteit’ krijgt hoofdletters, ‘de koningin’ niet."},
+      {w:"islamiet",c:"r",fix:"islamiet"},
+      {w:"eerste wereldoorlog",c:"g",fix:"Eerste Wereldoorlog"},
+      {w:"een rubens (schilderij)",c:"g",fix:"een Rubens"},
+      {w:"het noorden",c:"r",fix:"het noorden",let:"De verbetersleutel kleurt ‘noorden’ groen. Windstreken schrijf je klein (Spelbrood regel 101)."},
+      {w:"paasnacht",c:"r",fix:"paasnacht"},
+      {w:"franstalig",c:"g",fix:"Franstalig"},
+      {w:"brussel-zuid",c:"g",fix:"Brussel-Zuid"},
+      {w:"blanke",c:"r",fix:"blanke"},
+      {w:"middeleeuws",c:"r",fix:"middeleeuws"},
+      {w:"rusland",c:"g",fix:"Rusland"},
+      {w:"downsyndroom",c:"r",fix:"downsyndroom"},
+      {w:"jezus",c:"g",fix:"Jezus"},
+      {w:"nobelprijs",c:"g",fix:"Nobelprijs"},
+      {w:"zuidoosten",c:"r",fix:"zuidoosten"},
+      {w:"de planeet mars",c:"g",fix:"de planeet Mars"}
+     ]},
+    {type:"mc", title:"Hoofdletter of niet?", src:"Bundel – Hoofdletters, oefening 3 (uitgebreid)",
+     instr:"Duid de correcte schrijfwijze aan.",
+     items:[
+      {q:"verraders", o:["Judassen","judassen"], a:1, u:"Een judas is iemand met een eigenschap (verrader): soortnaam, dus klein."},
+      {q:"de godsdienst", o:["Jodendom","jodendom"], a:1, u:"Namen van religieuze stromingen schrijf je klein: jodendom, christendom, islam.",
+       let:"In de verbetersleutel zijn beide vormen groen gekleurd. Officieel is alleen ‘jodendom’ correct (Spelbrood regel 116)."},
+      {q:"lid van een kloosterorde", o:["een Jezuïet","een jezuïet"], a:1, u:"Een afleiding van een persoonsnaam schrijf je klein."},
+      {q:"gewoonten uit dat land", o:["zuid-afrikaanse gewoonten","Zuid-Afrikaanse gewoonten"], a:1, u:"Afgeleid van een aardrijkskundige naam: de hoofdletters blijven."},
+      {q:"in december", o:["Met Kerstmis zetten we een kerstboom.","Met kerstmis zetten we een Kerstboom.","Met Kerstmis zetten we een Kerstboom."], a:0, col:true, u:"De officiële feestdag krijgt een hoofdletter, de samenstelling niet."},
+      {q:"een boektitel", o:["Ik las De Zeven Zussen.","Ik las De zeven zussen."], a:1, u:"In een titel krijgt alleen het eerste woord een hoofdletter (Spelbrood regel 131).",
+       let:"In de theoriegids staat ‘De Zeven Zussen’. De officiële regel geeft alleen het eerste woord van een titel een hoofdletter."}
+     ]},
+    {type:"spot", title:"Fout-zoeker: de klasuitstap", src:"Extra oefening in context",
+     instr:"Klik op elk woord met een fout tegen de hoofdletterregels. Klik opnieuw om een markering weg te halen.",
+     head:"Van: klas6B@school.be · Aan: L. Peeters · Onderwerp: uitstap",
+     text:"Beste {Mevrouw|mevrouw} Peeters,\n{op|Op} maandag 3 {Maart|maart} bezoeken we met de klas het {vlaams|Vlaams} {parlement|Parlement} in Brussel. Daarna eten we samen in een {frans|Frans} restaurant. De gids gaf ons drie tips: {Kom|kom} op tijd, wees stil en luister goed.\nMet vriendelijke groeten\nKlas 6B"}
+  ]
+},
+/* ---------------- 2. BEZITSVORM ---------------- */
+{
+  id:"bezitsvorm", nr:2, title:"Bezitsvorm", icon:"🎒", color:"#f2b134",
+  sub:"Peters, Emma’s of Lucas’?",
+  lead:"Met een bezits-s zeg je van wie iets is. Meestal plak je de -s gewoon vast. Een apostrof heb je alleen nodig om een verkeerde uitspraak te voorkomen of na een sisklank.",
+  spelbrood:"regels 52–55",
+  cards:[
+    {t:"Hoofdregel: -s vast", r:"Schrijf de bezits-s vast aan het woord als er geen verkeerde uitspraak mogelijk is.",
+     ex:"<b>Peters</b> verloving, <b>Sofies</b> keuze, <b>tantes</b> erfenis, <b>Laures</b> verdriet, <b>Andrés</b> auto",
+     m:"Dat geldt ook voor een doffe e (Tines, Carolines) en voor é (Andrés, Hergés)."},
+    {t:"’s na een lange klinker", r:"Eindigt het woord op een lange klinker met één teken (a, e, i, o, u) of op medeklinker + y? Schrijf dan ’s.",
+     ex:"<b>Emma’s</b> fotoalbum, <b>Bo’s</b> boeken, <b>Yoko’s</b> stem, <b>baby’s</b> wiegje, <b>Ronny’s</b> tractor",
+     m:"Zonder apostrof zou je ‘Emmas’ verkeerd lezen."},
+    {t:"Alleen ’ na een sisklank", r:"Eindigt het woord op een s of een sisklank (s, z, sj, x, ce)? Dan laat je de -s weg en schrijf je alleen een apostrof.",
+     ex:"<b>Els’</b> voorstel, <b>Lucas’</b> meesterwerk, <b>Alex’</b> horloge, <b>Joyce’</b> boeken, <b>Sinterklaas’</b> stoomboot",
+     m:"Nooit Lucas’s of Lucass."},
+    {t:"Initiaalwoorden en cijfers", r:"Bij initiaalwoorden, letterwoorden met hoofdletters en combinaties met cijfers schrijf je ’s.",
+     ex:"<b>KLM’s</b> vluchtschema, <b>ABBA’s</b> succes, <b>K3’s</b> optreden",
+     m:""}
+  ],
+  zoek:{q:"Zoek in <em>Spel(d/t)brood?</em> regel 53 en 54. Welke twee situaties vragen om een apostrof? Geef bij elke situatie een eigen voorbeeld met de naam van een klasgenoot.", links:["publicaties","regels"]},
+  ex:[
+    {type:"mc", title:"Kies de juiste bezitsvorm", src:"Bundel – Bezitsvorm, oefening 1",
+     instr:"Duid de juiste vorm aan. Lees daarna de uitleg: die regel moet je kunnen verwoorden.",
+     items:[
+      {q:"Bert zijn appel", o:["Berts appel","Bert’s appel","Bert’ appel","Berts’ appel"], a:0, u:"Eindigt op een medeklinker: de -s komt vast aan het woord."},
+      {q:"Emma haar fotoalbum", o:["Emmas fotoalbum","Emma’s fotoalbum","Emma’ fotoalbum","Emmas’ fotoalbum"], a:1, u:"Eindigt op een lange klinker met één teken (a): ’s om de uitspraak te bewaren."},
+      {q:"Tine haar mp3-speler", o:["Tines mp3-speler","Tine’s mp3-speler","Tine’ mp3-speler","Tines’ mp3-speler"], a:0, u:"Een doffe e geeft geen leesprobleem: de -s komt vast."},
+      {q:"de tractor van Ronny", o:["Ronnys tractor","Ronny’s tractor","Ronny’ tractor","Ronnys’ tractor"], a:1, u:"Medeklinker + y: ’s."},
+      {q:"het meesterwerk van Lucas", o:["Lucass meesterwerk","Lucas’s meesterwerk","Lucas’ meesterwerk","Lucass’ meesterwerk"], a:2, u:"Eindigt op een s: de bezits-s valt weg, alleen een apostrof."},
+      {q:"de auto van André", o:["André’s auto","Andrés auto","André’ auto"], a:1, u:"Eindigt op é: geen leesprobleem, de -s komt vast."}
+     ]},
+    {type:"match", title:"Vorm en regel", src:"Extra: verklaar je keuze",
+     instr:"Klik op een bezitsvorm en daarna op de regel die erbij hoort.",
+     pairs:[
+      {l:"Peters fiets", r:"medeklinker: -s vast"},
+      {l:"Mia’s succes", r:"lange klinker: ’s"},
+      {l:"Carolines feestje", r:"doffe e: -s vast"},
+      {l:"Alex’ zoon", r:"sisklank: alleen ’"},
+      {l:"KLM’s vluchtschema", r:"initiaalwoord: ’s"}
+     ]},
+    {type:"gap", title:"Jong geleerd is oud gedaan", src:"Bundel – Bezitsvorm, oefening 2",
+     instr:"Vul de juiste bezitsvorm in. Een gewone apostrof (') typen mag.",
+     lines:[
+      "De papa van Arno is {{Arno’s}} papa.",
+      "De mama van Els is {{Els’}} mama.",
+      "De boeken van Bo zijn {{Bo’s}} boeken.",
+      "De foto van Sofie is {{Sofies}} foto.",
+      "Het sprookjesboek van Grimm is {{Grimms}} sprookjesboek.",
+      "De muziek van Andreas is {{Andreas’}} muziek.",
+      "De stoomboot van Sinterklaas is {{Sinterklaas’}} stoomboot.",
+      "De kaart van Stefanie is {{Stefanies}} kaart."
+     ]}
+  ]
+},
+/* ---------------- 3. MEERVOUD ---------------- */
+{
+  id:"meervoud", nr:3, title:"Meervoud", icon:"🐑", color:"#2fbf8f",
+  sub:"-en, -s of ’s?",
+  lead:"Meervouden maak je met -en of -s. Pas de regels voor enkele en dubbele klinkers en medeklinkers toe, en gebruik een apostrof alleen als je anders verkeerd zou lezen.",
+  spelbrood:"regels 56–61",
+  cards:[
+    {t:"Schrijf wat je hoort", r:"Plak -en of -s aan het woord. Let op de regels voor klinkers en medeklinkers.",
+     ex:"boom – <b>bomen</b>, maan – <b>manen</b> · rat – <b>ratten</b>, man – <b>mannen</b> · lente – <b>lentes</b>",
+     m:"-is wordt -issen: vonnissen, dromedarissen, secretarissen."},
+    {t:"Verdubbelen of niet?", r:"Ligt de klemtoon niet op de laatste lettergreep (-ik, -es, -el, -et), dan verdubbel je de medeklinker niet.",
+     ex:"<b>perziken</b>, <b>leeuweriken</b>, <b>dreumesen</b>, <b>engelen</b> ↔ <b>pakketten</b>, <b>marmotten</b> (klemtoon achteraan)",
+     m:""},
+    {t:"s en f worden z en v", r:"Een eind-s of eind-f wordt in het meervoud meestal een z of v.",
+     ex:"muis – <b>muizen</b>, brief – <b>brieven</b>",
+     m:"Soms blijven s en f: kersen, wensen, mensen, filosofen, paragrafen."},
+    {t:"’s na a, i, o, u, y", r:"Eindigt een woord op een lange klinker met één teken of op medeklinker + y, schrijf dan ’s.",
+     ex:"<b>ski’s</b>, <b>auto’s</b>, <b>euro’s</b>, <b>hobby’s</b>, <b>agenda’s</b>, <b>menu’s</b>",
+     m:"Eindigt het woord op é, doffe e of een combinatie van klinkers? Dan komt de -s vast: cafés, lentes, cadeaus, taboes, niveaus."},
+    {t:"Afkortingen en cijfers", r:"Initiaalwoorden, letters en cijfers krijgen een apostrof.",
+     ex:"<b>gsm’s</b>, <b>cd’s</b>, <b>OCMW’s</b>, <b>A4’s</b>, <b>sms’en</b>, <b>x’en</b>",
+     m:"Eindigt het initiaalwoord op een s, dan wordt het ’en (sms’en)."},
+    {t:"-ieën of -iën?", r:"Ligt de klemtoon op de -ie, schrijf dan -ieën. Ligt de klemtoon er niet op, schrijf dan -iën (soms -s).",
+     ex:"<b>knieën</b>, <b>melodieën</b>, <b>epidemieën</b> ↔ <b>bacteriën</b>, <b>oliën</b>, <b>poriën</b>",
+     m:""},
+    {t:"Latijn, Grieks en homoniemen", r:"Sommige leenwoorden houden hun eigen meervoud, vaak naast een gewone vorm.",
+     ex:"<b>musea</b> of museums, <b>criteria</b>, <b>politici</b> · blad – <b>bladen</b> (schrift) / <b>bladeren</b> (boom) · pad – <b>paden</b> (weg) / <b>padden</b> (dier)",
+     m:"Een dubbel meervoud is fout: musea’s, data’s."},
+    {t:"Bijzondere gevallen", r:"Maten en tijdsaanduidingen krijgen geen meervoud. Alle, beide, sommige … krijgen -n als ze zelfstandig naar personen verwijzen.",
+     ex:"zeven <b>jaar</b>, twee <b>uur</b>, honderd <b>euro</b> · <b>Allen</b> bleven sprakeloos. · Volgens <b>sommigen</b> …",
+     m:"Verwijzen ze naar dieren of zaken, dan geen -n: Kat en hond zijn beide populair."}
+  ],
+  zoek:{q:"Zoek in <em>Spel(d/t)brood?</em> regel 60. Is het ‘ceremonieën’ of ‘ceremoniën’? Wat zegt de brochure, en waarom?", links:["publicaties","woordenlijst"]},
+  ex:[
+    {type:"gap", title:"Wat zie je op straat?", src:"Bundel – Meervouden, oefening 1 (selectie)",
+     instr:"Vul de meervoudsvorm in van het woord tussen haakjes.",
+     text:"Je loopt over straat. Wat zie je? De meeste {{straten}} (straat) bestaan voor een groot deel uit economisch leven: banken, {{cafés}} (café), {{reisbureaus}} (reisbureau), {{garages}} (garage) … Al die zaken draaien om geld: {{euro’s}} (euro) staan centraal. Tijdens de {{vakanties}} (vakantie) gaan heel wat {{studenten}} (student) aan het werk. Via {{interimbureaus}} (interimbureau) krijg je de juiste {{contracten}} (contract). Zichtrekeningen of {{giro’s}} (giro) zijn {{geldcentra|geldcentrums}} (geldcentrum) op zich. Met je bankkaart doe je {{betalingen}} (betaling) aan {{bankautomaten}} (bankautomaat)."},
+    {type:"match", title:"Combineer het meervoud met de regel", src:"Bundel – Meervouden, oefening 2",
+     instr:"Klik op een meervoudsvorm en daarna op de regel die erbij hoort.",
+     pairs:[
+      {l:"vonnissen", r:"-is wordt -issen"},
+      {l:"perziken", r:"geen klemtoon op -ik: geen verdubbeling"},
+      {l:"muizen", r:"s wordt z"},
+      {l:"kousen", r:"s blijft s"},
+      {l:"ski’s", r:"korte klinker op het einde: ’s"},
+      {l:"cadeaus", r:"combinatie van klinkers: -s vast"},
+      {l:"gsm’s", r:"initiaalwoord: ’s"},
+      {l:"knieën", r:"klemtoon op -ie: -ieën"},
+      {l:"bacteriën", r:"geen klemtoon op -ie: -iën"},
+      {l:"musea", r:"Latijns meervoud"}
+     ]},
+    {type:"gap", title:"Raad het meervoud", src:"Bundel – Meervouden, oefening 3",
+     instr:"Vul het juiste meervoud in.",
+     lines:[
+      "Kamelen met één bult zijn {{dromedarissen}}.",
+      "Slimme jongeren zijn beslist geen {{dommeriken}}.",
+      "Aan het hoofd van de politiedienst staan {{commissarissen}}.",
+      "Een liedje bevat steeds verschillende {{melodieën}}.",
+      "De masseuse maakt gebruik van vele {{oliën}}.",
+      "De latten waarop je staat om te skiën, zijn {{ski’s}}.",
+      "De pest en de Mexicaanse griep zijn gevaarlijke {{epidemieën}} en worden veroorzaakt door bacteriën en {{virussen}}."
+     ]},
+    {type:"sort", title:"Leeuwerikken of leeuweriken?", src:"Bundel – Meervouden, oefening 4",
+     instr:"Zet elk woord in de juiste kolom. Denk aan het meervoud en let op de klemtoon.",
+     cats:[{id:"v",label:"Verdubbeling eindmedeklinker"},{id:"n",label:"Geen verdubbeling"}],
+     items:[
+      {w:"leeuwerik",c:"n",fix:"leeuweriken"},
+      {w:"marmot",c:"v",fix:"marmotten"},
+      {w:"pakket",c:"v",fix:"pakketten"},
+      {w:"luiwammes",c:"n",fix:"luiwammesen"},
+      {w:"dreumes",c:"n",fix:"dreumesen"},
+      {w:"perzik",c:"n",fix:"perziken"},
+      {w:"kabinet",c:"v",fix:"kabinetten"},
+      {w:"monnik",c:"n",fix:"monniken"}
+     ]}
+  ]
+},
+/* ---------------- 4. VERKLEINWOORDEN ---------------- */
+{
+  id:"verkleinwoorden", nr:4, title:"Verkleinwoorden", icon:"🐣", color:"#ef6fa0",
+  sub:"-tje, -etje, -je, -pje",
+  lead:"Bij een verkleinwoord vertrek je van het grondwoord en schrijf je wat je hoort. Lange klinkers op het einde verdubbel je, en alleen in een paar gevallen heb je een apostrof nodig.",
+  spelbrood:"regels 62–70",
+  cards:[
+    {t:"Schrijf wat je hoort", r:"Plak -tje, -etje, -je of -pje aan het grondwoord.",
+     ex:"stoel<b>tje</b>, bloem<b>etje</b>, boek<b>je</b>, boom<b>pje</b>, bloem<b>pje</b> · vreemde woorden ook: cake<b>je</b>, diner<b>tje</b>",
+     m:"Bijzondere gevallen: jongen → jongetje, nieuws → nieuwtje."},
+    {t:"Medeklinker verdubbelen", r:"Soms verdubbel je de eindmedeklinker zodat je het woord goed uitspreekt.",
+     ex:"we<b>gg</b>etje, spio<b>nn</b>etje, ri<b>nn</b>etje, ba<b>ll</b>etje",
+     m:""},
+    {t:"Lange klinker verdubbelen", r:"Eindigt het woord op een lange klinker met één teken (a, e, i, o, u)? Schrijf die dubbel voor -tje. De é verliest het accent, de i wordt ie.",
+     ex:"auto → auto<b>o</b>tje, oma → oma<b>a</b>tje, menu → menu<b>u</b>tje, kiwi → kiwi<b>e</b>tje, café → cafe<b>e</b>tje",
+     m:""},
+    {t:"Woorden op -ing", r:"Woorden op -ing krijgen -inkje of -ingetje. Bij -kje valt de g weg.",
+     ex:"koni<b>nkje</b>, woni<b>nkje</b>, kett<b>inkje</b>, har<b>inkje</b> · ring<b>etje</b>, ding<b>etje</b>",
+     m:""},
+    {t:"Franse woorden op -e", r:"Wordt de eind-e niet uitgesproken, dan mag je het verkleinwoord vernederlandsen.",
+     ex:"machine → machi<b>en</b>tje, aspirine → aspiri<b>en</b>tje, parachute → parach<b>uu</b>tje",
+     m:"De ‘gewone’ vorm mag er vaak naast: machinetje, pralinetje naast pralientje."},
+    {t:"Apostrof: alleen in deze gevallen", r:"Na medeklinker + y, na een u die je als /oe/ uitspreekt en bij afkortingen, letters en cijfers.",
+     ex:"<b>baby’tje</b>, <b>pony’tje</b>, <b>tiramisu’tje</b>, <b>A4’tje</b>, <b>OCMW’tje</b>, <b>tv’tje</b>, <b>cd’tje</b>",
+     m:"Nooit: auto’tje, mama’tje, café’tje."}
+  ],
+  zoek:{q:"Zoek in <em>Spel(d/t)brood?</em> regel 68 en 69. Waarom schrijf je ‘parapluutje’ maar ‘tiramisu’tje’?", links:["publicaties","woordenlijst"]},
+  ex:[
+    {type:"choice", title:"De fietstocht", src:"Bundel – Verkleinwoorden, oefening 1 (selectie)",
+     instr:"Kies telkens de juiste schrijfwijze in het keuzemenu.",
+     text:"Op een mooie zomerdag fietsen [[mamatje|mama’tje|*mamaatje]] en [[papatje|*papaatje|papa’tje]] samen met hun [[*zoontje|zoon’tje|zoonetje]] Bart richting Gent. Ze hebben het geweldige [[*ideetje|idee’tje|ideeetje]] iets te drinken in een plaatselijk [[cafétje|café’tje|*cafeetje]], maar ze vinden alleen een gesloten [[bistrotje|bistro’tje|*bistrootje]]. Uiteindelijk bereiken ze een [[*restaurantje|restaurant’tje|restauranttje]] waar ze verlangen naar een lekker [[*dinertje|diner’tje|dineretje]]. Het [[menutje|menu’tje|*menuutje]] is niet veel soeps, dus mama bestelt alleen een [[*theetje|thee’tje|theeetje]]. In een bloemenwinkel staat een mooi [[azaleatje|azalea’tje|*azaleaatje]]. Op het einde van de dag kopen ze nog een [[*souvenirtje|souvenir’tje|souveniretje]] voor oma. Wat een [[clichétje|*clicheetje|cliché’tje]]!"},
+    {type:"gap", title:"Schrijf het verkleinwoord", src:"Bundel – Verkleinwoorden, oefening 2 (selectie)",
+     instr:"Vul het verkleinwoord in van het woord tussen haakjes.",
+     lines:[
+      "(auto) Kan die basketter wel in dat {{autootje}}?",
+      "(schip) Dat {{scheepje}} kan nooit op zee varen!",
+      "(ketting) Zus kreeg een {{kettinkje}} voor haar verjaardag.",
+      "(pyjama) In de kast lag nog een oud {{pyjamaatje}}.",
+      "(canapé) Dat {{canapeetje}} ligt ongelooflijk goed.",
+      "(ski) Gelukkig paste mijn skibot op het {{skietje}}.",
+      "(paraplu) Iedereen wou schuilen onder moeders {{parapluutje}}.",
+      "(museum) Het {{museumpje}} was heel interessant.",
+      "(koning) Het {{koninkje}} stond nog op het schaakbord.",
+      "(OCMW) Het {{OCMW’tje}} zorgt voor de minderbedeelden.",
+      "(baby) Het {{baby’tje}} lag rustig te slapen.",
+      "(dreumes) Het {{dreumesje}} stond te wenen."
+     ]}
+  ]
+},
+/* ---------------- 5. WOORDEN BOUWEN ---------------- */
+{
+  id:"woordenbouwen", nr:5, title:"Woorden bouwen", icon:"🧱", color:"#3d9be9",
+  sub:"Aaneen of los? -e- of -en-?",
+  lead:"Een samenstelling schrijf je aaneen, een woordgroep los. Hoor je één hoofdklemtoon, dan schrijf je meestal aaneen. Bij tussenklanken beslis je met een vast stappenplan.",
+  spelbrood:"regels 143–160 en 198–260",
+  cards:[
+    {t:"Samenstelling of woordgroep?", r:"Hoor je één hoofdklemtoon, schrijf dan aaneen. Hoor je er twee, schrijf dan los.",
+     ex:"een <b>kleinkind</b> ↔ een <b>klein kind</b> · De <b>echtgenoten</b> hebben <b>echt genoten</b>.",
+     m:"Ook Engelse samenstellingen schrijf je aaneen: sciencefiction, online, voicemail, lastminuteaanbieding."},
+    {t:"Betekenis bepaalt de spelling", r:"Sommige combinaties schrijf je los of aaneen, met een andere betekenis.",
+     ex:"<b>te kort</b> (korter dan nodig) ↔ het <b>tekort</b> · <b>ten slotte</b> (tot slot) ↔ <b>tenslotte</b> (per slot van rekening) · <b>ten minste</b> (minstens) ↔ <b>tenminste</b> (althans) · <b>alles behalve</b> ↔ <b>allesbehalve</b> (helemaal niet)",
+     m:"Twijfel? Vervang door het synoniem: past ‘minstens’, schrijf dan ‘ten minste’."},
+    {t:"er-, hier-, daar-, waar-", r:"Schrijf combinaties met er, hier, daar en waar aaneen.",
+     ex:"<b>erop</b>, <b>waarmee</b>, <b>daartussen</b>, <b>hiertegenover</b>",
+     m:"Hoort het voorzetsel bij het volgende woord, schrijf dan los: Ik zit achter <b>op de fiets</b> ↔ Ik zit <b>achterop</b>. Met ergens, nergens, overal schrijf je ook los: ergens over."},
+    {t:"Getallen", r:"Schrijf getallen aaneen tot en met duizend. Na duizend en rond miljoen of miljard komt een spatie.",
+     ex:"<b>tweehonderdvijftig</b>, <b>negenentachtig</b>, <b>drieduizend tweehonderdvijftig</b>, <b>vijfenvijftig miljoen</b>",
+     m:"Breuken schrijf je los (drie vierde), behalve in een samenstelling: tweederdemeerderheid."},
+    {t:"Tussen-s", r:"Schrijf een -s als je ze hoort. Begint het tweede deel met een s, vergelijk dan met een woord met hetzelfde eerste deel.",
+     ex:"<b>eendagsvlieg</b>, <b>jongensgek</b> · <b>dorpsstraat</b> (want dorpsplein), <b>stationsstraat</b> (want stationshal)",
+     m:"Soms zijn beide vormen juist: tijdverschil/tijdsverschil, spellingprobleem/spellingsprobleem."},
+    {t:"Tussenklank -e- of -en-", r:"Stap 1: is het eerste deel een zelfstandig naamwoord? Stap 2: heeft het een meervoud op -en (en niet op -es)? Twee keer ja: -en-. Anders: -e-.",
+     ex:"<b>pannenkoek</b>, <b>paardenbloem</b>, <b>boekenkast</b> ↔ <b>aspergesoep</b> (mv. asperges), <b>beresterk</b>, <b>snottebel</b>, <b>rodekool</b>",
+     m:"Uitzonderingen met -e-: als het eerste deel uniek is (zonneschijn, maneschijn) en in versteende woorden (bolleboos, schattebout, bullebak, elleboog)."}
+  ],
+  zoek:{q:"Zoek in <em>Spel(d/t)brood?</em> regel 143–149 het stappenplan voor -e- en -en-. Waarom schrijf je ‘reuzenrad’ maar ‘reuzeleuk’?", links:["publicaties","regels"]},
+  ex:[
+    {type:"choice", title:"Los of aaneen?", src:"Bundel – Bouwen van woorden, oefening 2 (uitgebreid)",
+     instr:"Kies de juiste schrijfwijze. Let op de betekenis in de zin.",
+     lines:[
+      "Ik heb zo het vermoeden dat ik [[*te veel|teveel]] betaald heb.",
+      "Het [[te kort|*tekort]] op zijn rekening was aanzienlijk.",
+      "Die winkelier is [[alles behalve|*allesbehalve]] vriendelijk.",
+      "De voorzitter bedankte [[*ten slotte|tenslotte]] alle aanwezigen.",
+      "Koop gerust die tweede laptop, je hebt [[ten slotte|*tenslotte]] geld genoeg.",
+      "Schrijf je snel in, als je [[ten minste|*tenminste]] tijd hebt.",
+      "De omzet bedraagt [[*ten minste|tenminste]] 10 000 euro.",
+      "[[*Zolang|Zo lang]] je studeert, betaal ik je huur.",
+      "Ik zit bij mijn vriend [[achterop|*achter op]] de fiets.",
+      "Hij viel van de ladder en kwam [[*erbovenop|er bovenop]] terecht."
+     ]},
+    {type:"choice", title:"-e- of -en-?", src:"Bundel – Bouwen van woorden, oefening 4 (uitgebreid)",
+     instr:"Kies de juiste tussenklank. Gebruik het stappenplan van de regelkaart.",
+     lines:[
+      "Ik schrok van de imposante reuz[[e|*en]]gestalte.",
+      "Mijn kleine schatt[[*e|en]]bout had een snott[[*e|en]]bel.",
+      "Ze genoot van het uitzicht vanuit het reuz[[e|*en]]rad.",
+      "Ze vertelde over haar weduw[[*e|en]]pensioen en de ap[[e|*en]]streken van haar kleinkinderen.",
+      "De bull[[*e|en]]bak van de klas kreeg strafwerk.",
+      "Op zondag bakken we pann[[e|*en]]koeken.",
+      "Als voorgerecht serveren we asperg[[*e|en]]soep.",
+      "We genoten van de zonn[[*e|en]]schijn.",
+      "Na de training voelde ik me ber[[*e|en]]sterk."
+     ]},
+    {type:"mc", title:"Getallen en tussen-s", src:"Extra oefening",
+     instr:"Kies de juiste schrijfwijze.",
+     items:[
+      {q:"1 250", o:["duizend tweehonderdvijftig","duizendtweehonderdvijftig","duizend tweehonderd vijftig"], a:0, u:"Aaneen tot duizend, daarna een spatie."},
+      {q:"3/4 van de klas", o:["drie vierde","drievierde","drie-vierde"], a:0, u:"Breuken schrijf je los."},
+      {q:"een meerderheid van twee derde", o:["een twee derde meerderheid","een tweederdemeerderheid","een twee-derde-meerderheid"], a:1, u:"In een samenstelling schrijf je de breuk aaneen."},
+      {q:"de straat bij het station", o:["stationstraat","stationsstraat"], a:1, u:"Vergelijk met stationshal: je hoort een s, dus stationsstraat."},
+      {q:"Welke zin is correct?", o:["Mijn oma past op haar kleinkind.","Mijn oma past op haar klein kind."], a:0, u:"Bedoel je ‘het kind van je kind’, dan hoor je één klemtoon: kleinkind."}
+     ]}
+  ]
+},
+/* ---------------- 6. KOPPELTEKEN & TREMA ---------------- */
+{
+  id:"koppelteken", nr:6, title:"Koppelteken & trema", icon:"🔗", color:"#8c7cf0",
+  sub:"auto-ongeval of poëzie?",
+  lead:"Koppelteken en trema voorkomen leesfouten. Een koppelteken scheidt de delen van een samenstelling, een trema zet je in één woord. Daarnaast heeft het koppelteken een paar vaste toepassingen.",
+  spelbrood:"regels 162–231",
+  cards:[
+    {t:"Klinkerbotsing: koppelteken of trema?", r:"Botsen twee klinkers in een samenstelling, dan schrijf je een koppelteken. In een ongeleed woord of een afleiding schrijf je een trema op de tweede klank.",
+     ex:"<b>auto-ongeval</b>, <b>zee-egel</b>, <b>na-apen</b>, <b>ski-jas</b>, <b>café-eigenaar</b> ↔ <b>ruïne</b>, <b>poëzie</b>, <b>naïef</b>, <b>beïnvloeden</b>, <b>vacuüm</b>",
+     m:"Getallen krijgen een trema: tweeëntwintig, drieënvijftig."},
+    {t:"Geen trema bij …", r:"Latijnse uitgangen -eum, -eus, Franse uitgangen -ien, -ienne, op ij en ui, en na een i bij drie of meer klinkers.",
+     ex:"<b>museum</b>, <b>serieus</b>, <b>elektricien</b>, <b>geuit</b>, <b>financieel</b>, <b>begroeiing</b>",
+     m:""},
+    {t:"Gelijkwaardige delen", r:"Kun je de delen omwisselen (x én y), dan schrijf je een koppelteken.",
+     ex:"<b>trainer-coach</b>, <b>leerling-kok</b>, <b>zwart-wit</b>, <b>Nederlands-Vlaams</b>, <b>rooms-katholiek</b>",
+     m:"Volgt er nog een woord, dan komt dat vast aan het laatste deel: zwart-witfoto. Is het eerste deel bepalend, dan aaneen: grijsblauw, christendemocraat."},
+    {t:"Vaste voor- en nabepalingen", r:"Na niet, non, ex, oud, bijna, adjunct, chef, collega, kandidaat, interim, leerling, Sint … en voor generaal, president, verbaal schrijf je een koppelteken.",
+     ex:"<b>niet-roker</b>, <b>non-fictie</b>, <b>ex-vrouw</b>, <b>oud-leerling</b>, <b>chef-kok</b>, <b>Sint-Jozef</b>, <b>proces-verbaal</b>, <b>secretaris-generaal</b>",
+     m:""},
+    {t:"Eigennamen", r:"Een samenstelling met een eigennaam vooraan schrijf je aaneen. Staat de eigennaam achteraan, gebruik dan een koppelteken.",
+     ex:"<b>Afrikamissie</b>, <b>Peter Benoitstraat</b>, <b>Picassotentoonstelling</b> ↔ <b>anti-Amerikaans</b>, <b>regering-Mertens</b>, <b>commissie-Stevaert</b>",
+     m:"Bij klinkerbotsing toch een koppelteken: Afrika-avond. Samengestelde aardrijkskundige namen: West-Vlaanderen, Midden-Amerikaans."},
+    {t:"Cijfers, letters en afkortingen", r:"Met een cijfer, losse letter, symbool of initiaalwoord schrijf je een koppelteken.",
+     ex:"<b>A4-formaat</b>, <b>T-shirt</b>, <b>25m-bad</b>, <b>@-teken</b>, <b>tv-programma</b>, <b>cd-speler</b>, <b>gsm-hoesje</b>",
+     m:"Letterwoorden en verkortingen (je leest ze als woord) komen vast: aidspreventie, pincode, bamastructuur, infoavond."},
+    {t:"Samenkoppelingen en weglating", r:"Woordgroepen zonder duidelijk kernwoord krijgen koppeltekens. Laat je een deel weg, dan schrijf je een weglatingsstreepje.",
+     ex:"<b>doe-het-zelver</b>, <b>kant-en-klaar</b>, <b>up-to-date</b>, <b>nek-aan-nekrace</b>, <b>het anders-zijn</b> · <b>in- en uitvoer</b>, <b>kunst- en vliegwerk</b>",
+     m:"Na een Latijns of Grieks voorvoegsel bij klinkerbotsing: socio-economisch, anti-immigratiebeleid, bio-industrie."}
+  ],
+  zoek:{q:"Zoek in <em>Spel(d/t)brood?</em> regel 162 en 165. Leg uit waarom je ‘zee-egel’ met een koppelteken schrijft, maar ‘poëzie’ met een trema.", links:["publicaties","regels"]},
+  ex:[
+    {type:"gap", title:"Plak de stukken aan elkaar", src:"Bundel – Bouwen van woorden, oefening 1 (selectie)",
+     instr:"Schrijf de delen correct als één geheel: aaneen, met een koppelteken of met een spatie.",
+     lines:[
+      "socio + economisch → {{socio-economisch}}",
+      "privé + omstandigheden → {{privéomstandigheden}}",
+      "aids + preventie → {{aidspreventie}}",
+      "25m + bad → {{25m-bad}}",
+      "christen + democraat → {{christendemocraat}}",
+      "win + winsituatie → {{win-winsituatie}}",
+      "de regering + Mertens → de {{regering-Mertens}}",
+      "bruto + opbrengst → {{bruto-opbrengst}}",
+      "anti + immigratiebeleid → {{anti-immigratiebeleid}}",
+      "cd + speler → {{cd-speler}}",
+      "niet + roker → {{niet-roker}}",
+      "doe + het + zelver → {{doe-het-zelver}}",
+      "het + alleen + zijn → het {{alleen-zijn}}"
+     ],
+     let:"De verbetersleutel geeft ‘CD-speler’ en ‘Het alleen zijn’. Officieel is het ‘cd-speler’ (een ingeburgerd initiaalwoord schrijf je klein) en ‘het alleen-zijn’ (zoals ‘het anders-zijn’)."},
+    {type:"mc", title:"Kies de juiste schrijfwijze", src:"Bundel – Bouwen van woorden, oefening 3",
+     instr:"Duid telkens de correcte vorm aan.",
+     items:[
+      {q:"", o:["kunst en vliegwerk","kunst- en vliegwerk","kunstenvliegwerk"], a:1, u:"Weglatingsstreepje: kunstwerk en vliegwerk."},
+      {q:"", o:["C4-formulier","C4formulier","C4 formulier"], a:0, u:"Samenstelling met een letter en een cijfer: koppelteken."},
+      {q:"", o:["zesdeeeuws","zesde-eeuws","zesde eeuws"], a:1, u:"Klinkerbotsing (e+e) bij een rangtelwoord: koppelteken."},
+      {q:"", o:["meeeter","meeëter","mee-eter"], a:1, u:"Meeëter is geen samenstelling meer (het is geen ‘eter’): trema."},
+      {q:"", o:["haut-couture","hautcouture","haute couture"], a:2, u:"Uitheemse woordgroep: zoals in het Frans."},
+      {q:"", o:["bioindustrie","bio-industrie","bio industrie"], a:1, u:"Grieks voorvoegsel met klinkerbotsing (o+i): koppelteken."},
+      {q:"", o:["uptodate","up to date","up-to-date"], a:2, u:"Engelse samenkoppeling: koppeltekens."},
+      {q:"", o:["chefkok","chef-kok","chef kok"], a:1, u:"‘chef’ is een vaste voorbepaling: koppelteken."},
+      {q:"", o:["wcpot","wc pot","wc-pot"], a:2, u:"Initiaalwoord in een samenstelling: koppelteken."},
+      {q:"", o:["lilaachtig","lilaächtig","lila-achtig"], a:2, u:"Klinkerbotsing a+a voor -achtig: koppelteken."},
+      {q:"", o:["medeKamerlid","mede-Kamerlid","mede Kamerlid"], a:1, u:"Het tweede deel begint met een hoofdletter: koppelteken."},
+      {q:"", o:["gsmhoesje","gsm hoesje","gsm-hoesje"], a:2, u:"Initiaalwoord in een samenstelling: koppelteken."}
+     ]},
+    {type:"mc", title:"Trema-test", src:"Extra oefening",
+     instr:"Welke vorm is correct?",
+     items:[
+      {q:"", o:["ruine","ruïne","ru-ine"], a:1, u:"Ongeleed woord met klinkerbotsing: trema."},
+      {q:"", o:["museüm","museum"], a:1, u:"Latijnse uitgang -eum: geen trema."},
+      {q:"", o:["twee-en-twintig","tweeentwintig","tweeëntwintig"], a:2, u:"Getallen met -en- krijgen een trema."},
+      {q:"", o:["financiëel","financieel"], a:1, u:"Drie klinkers na een i: geen trema."},
+      {q:"", o:["zeeëgel","zee-egel"], a:1, u:"Samenstelling (zee + egel): koppelteken, geen trema."},
+      {q:"", o:["beinvloeden","beïnvloeden","be-invloeden"], a:1, u:"Afleiding met klinkerbotsing: trema."}
+     ]}
+  ]
+},
+/* ---------------- 7. AFKORTINGEN & ACCENTEN ---------------- */
+{
+  id:"afkortingen", nr:7, title:"Afkortingen & accenten", icon:"✂️", color:"#19b5b0",
+  sub:"bv., tv, NAVO, info en café",
+  lead:"Er zijn vier soorten afkortingen, elk met hun eigen regels voor punten en hoofdletters. Accenttekens gebruik je alleen waar de uitspraak of het leenwoord dat vraagt.",
+  spelbrood:"regels 289–310 en 18–22",
+  cards:[
+    {t:"Vier soorten afkortingen", r:"Echte afkorting: je spreekt het volledige woord uit. Initiaalwoord: letter per letter. Letterwoord: je leest het als een woord. Verkorting: een stuk van het woord.",
+     ex:"<b>bijv./bv.</b> (bijvoorbeeld) · <b>tv, btw, VRT</b> · <b>NAVO, aids, pin</b> · <b>info, prof, horeca</b>",
+     m:""},
+    {t:"Echte afkortingen: punten", r:"Een echte afkorting krijgt een punt, meestal één per afgekort woord.",
+     ex:"<b>bv.</b>, <b>enz.</b>, <b>dr.</b>, <b>i.v.m.</b>, <b>a.u.b.</b>, <b>o.a.</b>, <b>z.o.z.</b>",
+     m:"Symbolen voor maten en eenheden krijgen geen punt: km, kg, m, MHz, ha, €. Soms een schuine streep: p/a, km/h, m/v."},
+    {t:"Initiaal- en letterwoorden", r:"Initiaal- en letterwoorden krijgen geen punten. Eigennamen krijgen hoofdletters, ingeburgerde soortnamen kleine letters.",
+     ex:"<b>VRT</b>, <b>NAVO</b>, <b>UEFA</b>, <b>DNA</b> ↔ <b>tv</b>, <b>gsm</b>, <b>sms</b>, <b>btw</b>, <b>vip</b>, <b>cd</b>",
+     m:"Letterwoorden van eigennamen met vier of meer letters krijgen vaak alleen een beginhoofdletter: Unicef, Unesco."},
+    {t:"Accenttekens", r:"Een accent zet je waar de uitspraak het nodig heeft, en in Franse woorden die nog als Frans aanvoelen.",
+     ex:"<b>comité</b>, <b>paté</b>, <b>crèche</b>, <b>enquête</b>, <b>crème fraîche</b>, <b>déjà vu</b>, <b>tête-à-tête</b>",
+     m:"In ingeburgerde woorden verdwijnt het accent: depot, ragout, etage. Vrouwelijke vormen op -ée worden -ee: logee, attachee."},
+    {t:"Klemtoonteken", r:"Met een klemtoonteken geef je nadruk of maak je een verschil in betekenis duidelijk.",
+     ex:"Er is maar <b>één</b> winnaar. · Dat is <b>dé</b> oplossing. · Hij stond <b>vóór</b> het huis (niet erachter).",
+     m:"Gebruik het alleen als het echt nodig is."}
+  ],
+  zoek:{q:"Zoek in <em>Spel(d/t)brood?</em> het hoofdstuk Afkortingen (vanaf regel 289). Waarom schrijf je ‘btw’ in kleine letters maar ‘VRT’ in hoofdletters?", links:["publicaties","woordenlijst"]},
+  ex:[
+    {type:"sort", title:"Welke soort afkorting?", src:"Extra oefening",
+     instr:"Zet elke afkorting in het juiste vak.",
+     cats:[{id:"e",label:"Echte afkorting"},{id:"i",label:"Initiaalwoord"},{id:"l",label:"Letterwoord"},{id:"v",label:"Verkorting"}],
+     items:[
+      {w:"bv.",c:"e"},{w:"a.u.b.",c:"e"},{w:"i.v.m.",c:"e"},
+      {w:"tv",c:"i"},{w:"btw",c:"i"},{w:"VRT",c:"i"},
+      {w:"NAVO",c:"l"},{w:"aids",c:"l"},{w:"pin",c:"l"},
+      {w:"info",c:"v"},{w:"horeca",c:"v"},{w:"prof",c:"v"}
+     ]},
+    {type:"mc", title:"Juist afgekort?", src:"Extra oefening",
+     instr:"Welke schrijfwijze is correct?",
+     items:[
+      {q:"bijvoorbeeld", o:["bv.","b.v.","bv"], a:0, u:"Echte afkorting van één woord: één punt."},
+      {q:"in verband met", o:["ivm.","i.v.m.","i.v.m"], a:1, u:"Eén punt per afgekort woord."},
+      {q:"kilometer", o:["km","km.","Km"], a:0, u:"Internationaal symbool: geen punt."},
+      {q:"televisie", o:["TV","t.v.","tv"], a:2, u:"Ingeburgerd initiaalwoord: kleine letters, geen punten."},
+      {q:"Noord-Atlantische Verdragsorganisatie", o:["N.A.V.O.","NAVO","Navo"], a:1, u:"Letterwoord van een eigennaam: hoofdletters, geen punten."},
+      {q:"meervoud van gsm", o:["gsms","gsm’s","GSM’s"], a:1, u:"Initiaalwoord: ’s in het meervoud."}
+     ]},
+    {type:"mc", title:"Accent of niet?", src:"Extra oefening",
+     instr:"Kies de juiste vorm.",
+     items:[
+      {q:"een overleggroep", o:["een comite","een comité","een comitè"], a:1, u:"Het accent is nodig voor de uitspraak."},
+      {q:"op je soep", o:["crème fraîche","creme fraiche","crême fraiche"], a:0, u:"Frans leenwoord: de accenten blijven."},
+      {q:"Nadruk op het telwoord", o:["Er is maar een winnaar, niet twee.","Er is maar één winnaar, niet twee."], a:1, u:"Klemtoonteken voor nadruk of om verwarring met ‘een’ te vermijden."},
+      {q:"onze gast (vrouw)", o:["onze logée","onze logee"], a:1, u:"Vrouwelijke vorm op -ée wordt in het Nederlands -ee."}
+     ]}
+  ]
+},
+/* ---------------- 8. LEESTEKENS ---------------- */
+{
+  id:"leestekens", nr:8, title:"Leestekens", icon:"❗", color:"#f08a24",
+  sub:"Punt, komma en de rest",
+  lead:"Leestekens geven structuur aan je zin en maken je tekst leesbaar. Een punt, vraagteken of uitroepteken sluit een zin af. Binnen de zin geven komma, puntkomma, dubbelepunt en de andere tekens pauzes en verbanden aan.",
+  spelbrood:"niet in de brochure: zie Taaladvies › Spellingregels",
+  cards:[
+    {t:"Einde van de zin", r:"Punt na een mededeling of opdracht. Vraagteken na een vraag of verzoek. Uitroepteken bij emotie, bevel of wens.",
+     ex:"Neem je werkboek<b>.</b> · Wilt u dit aan de leerkracht geven<b>?</b> · Let op<b>!</b>",
+     m:""},
+    {t:"De komma", r:"Een komma geeft een korte pauze en maakt de structuur duidelijk.",
+     ex:"opsomming: cheesecake<b>,</b> brownies en vlaai · tussen twee persoonsvormen: Terwijl ik telefoneerde<b>,</b> ging de bel. · bijstelling: Jan<b>,</b> mijn broer<b>,</b> … · aanspreking: Je kijkt triestig<b>,</b> Floris. · tussenwerpsel: Bah<b>,</b> … · voor maar en want",
+     m:"Geen komma voor ‘en’ in een gewone opsomming."},
+    {t:"Puntkomma", r:"Scheidt minder dan een punt, maar meer dan een komma. Ook in een opsomming met lange delen.",
+     ex:"Sommige chauffeurs houden zich aan de regels<b>;</b> anderen rijden altijd te snel.",
+     m:""},
+    {t:"Dubbelepunt", r:"Kondigt iets aan: directe rede, een citaat, een opsomming of een verklaring.",
+     ex:"Zij antwoordt<b>:</b> ‘Ja, ik wil.’ · Hij reist door vier landen<b>:</b> Oostenrijk, Italië, … · Niet schaatsen<b>:</b> het dooit.",
+     m:"Na een dubbelepunt schrijf je klein, behalve bij directe rede of een citaat."},
+    {t:"Aanhalingstekens", r:"Voor directe rede, ironie, een opvallend of zelfbedacht woord en titels.",
+     ex:"Jef vroeg<b>:</b> ‘Wanneer ben je thuis?’ · ‘Ik heb er geen zin in’<b>,</b> zei ze. · Dit is echt een ‘meesterwerk’.",
+     m:""},
+    {t:"Gedachtestreep, beletselteken, haakjes en schuine streep", r:"Streep: onderbreking of nadruk. Beletselteken (…): onvolledig, spanning, iets weglaten. Haakjes: extra uitleg of gevoelswaarde (?!). Schuine streep: keuze.",
+     ex:"Het resultaat is <b>–</b> niemand verwachtte dat <b>–</b> verbluffend. · De deur draaide krakend open<b>…</b> · Ze studeert nog een uur geschiedenis <b>(!)</b>. · jongen<b>/</b>meisje",
+     m:""}
+  ],
+  zoek:{q:"Ga naar Team Taaladvies › Spellingregels en zoek het onderdeel over leestekens. Komt er een komma voor ‘en’? Noteer de regel en een voorbeeld.", links:["regels"]},
+  ex:[
+    {type:"choice", title:"Welk leesteken hoort hier?", src:"Extra oefening op basis van de theoriegids",
+     instr:"Kies het juiste leesteken. ‘(niets)’ betekent dat er geen leesteken hoort.",
+     lines:[
+      "Voor het feestje maken we cheesecake[[*,|;|:]] brownies en perenvlaai.",
+      "Terwijl ik telefoneerde[[*,|;|_]] ging de deurbel.",
+      "Jan[[*,|:|_]] mijn oudste broer[[*,|:|_]] heeft een boerderij.",
+      "Ze was erg laat[[*,|_|;]] maar ze miste haar trein niet.",
+      "Hij reist door vier landen[[*:|,|;]] Oostenrijk, Italië, Duitsland en Slovenië.",
+      "Wilt u dit aan de leerkracht geven[[*?|.|!]]",
+      "Er hangt een poster[[*:|,|;]] ‘Rust roest.’",
+      "Je kijkt zo triestig[[*,|_|:]] Floris.",
+      "‘Ik heb er geen zin in’[[*,|.|_]] zei ze.",
+      "Bah[[*,|_|.]] dat lust ik niet!"
+     ]},
+    {type:"mc", title:"Wat doet dit leesteken?", src:"Extra oefening",
+     instr:"Kies de beste verklaring.",
+     items:[
+      {q:"Dit is echt een ‘meesterwerk’.", o:["directe rede","ironie","titel"], a:1, u:"De aanhalingstekens tonen dat je het niet letterlijk meent."},
+      {q:"De deur draaide krakend open…", o:["onvolledige opsomming","spanning opdrijven","weggelaten letters"], a:1, u:"Het beletselteken zorgt voor spanning."},
+      {q:"Ze zal nog een uur geschiedenis (!) studeren.", o:["extra uitleg","gevoelswaarde: verbazing","een keuze"], a:1, u:"(!) of (?) tussen haakjes geeft gevoelswaarde."},
+      {q:"Gevraagd: jongen/meisje voor een vakantiejob.", o:["een keuze","een tegenstelling","een afkorting"], a:0, u:"De schuine streep duidt een keuze aan."},
+      {q:"Ze reed – heel langzaam – naar huis.", o:["onderbreking die iets benadrukt","een opsomming","een verklaring"], a:0, u:"Gedachtestreepjes leggen nadruk of onderbreken de gedachtegang."}
+     ]}
+  ]
+}
+];
+
+/* ---------------- EINDBAAS ---------------- */
+const BOSS = [
+  {title:"Mail 1 · Sollicitatie voor een vakantiejob", head:"Van: lina.d@mail.be · Aan: info@hetbruggetje.be · Onderwerp: vakantiejob",
+   text:"Geachte mevrouw Janssens,\nOp uw {Website|website} las ik dat u in {Juli|juli} een jobstudent zoekt voor uw {cafe|café} in het centrum van {leuven|Leuven}. Ik heb al ervaring als hulpkelner in een restaurantje aan zee, waar ik ook de menu’s opstelde. Mijn sterke punten: ik ben stipt, vriendelijk en werk graag in team. Ik kan ten minste drie dagen per week werken. Ik hoop dat u mijn {CV|cv} wilt bekijken.\nMet {Vriendelijke|vriendelijke} groeten\nLina Desmet"},
+  {title:"Mail 2 · Bericht aan een klant", head:"Van: info@despaak.be · Aan: k.claes@mail.be · Onderwerp: uw bestelling",
+   text:"Beste {Meneer|meneer} Claes,\nBedankt voor uw bestelling van twee T-shirts en drie {mp3 spelers|mp3-spelers}. Door een probleem in ons magazijn worden de {pakketen|pakketten} pas op {Woensdag|woensdag} geleverd. Onze excuses daarvoor! Als compensatie krijgt u een kortingsbon van 10 euro. Hebt u nog {vragen.|vragen?} Bel dan gerust naar onze klantendienst.\nVriendelijke groeten\nHet team van fietsenwinkel De Spaak"},
+  {title:"Post · Sociale media van de klas", head:"📸 klas6B · Instagram",
+   text:"Wat een weekend! Met {tweeentwintig|tweeëntwintig} leerlingen trokken we naar het {vlaams|Vlaams} {parlement|Parlement}. Daarna aten we {pannekoeken|pannenkoeken} in een gezellig cafeetje. {’s avonds|’s Avonds} keken we naar de film Het verdriet van België. Anna’s broer was mee, net als {Lucas’s|Lucas’} zus. Volgende keer trekken we naar het noorden van Frankrijk: wie gaat er mee?"}
+];
+
+/* ---------------- EXIT TICKET ---------------- */
+const EXIT = [
+  {lab:"hoofdletters", q:"Welke zin is correct gespeld?", o:["’s Avonds kijk ik naar het nieuws.","’S avonds kijk ik naar het nieuws.","’s avonds kijk ik naar het nieuws."], a:0, col:true, u:"Na ’s krijgt het tweede woord de hoofdletter."},
+  {lab:"hoofdletters", q:"Welke zin is correct gespeld?", o:["Met Kerstmis staat er een kerstboom in de klas.","Met kerstmis staat er een Kerstboom in de klas.","Met Kerstmis staat er een Kerstboom in de klas."], a:0, col:true, u:"Feestdag: hoofdletter. Samenstelling: klein."},
+  {lab:"bezitsvorm", q:"De fiets van Lucas is …", o:["Lucas’ fiets","Lucas’s fiets","Lucass fiets"], a:0, u:"Eindigt op een s: alleen een apostrof."},
+  {lab:"meervoud", q:"Het meervoud van ‘hobby’ is …", o:["hobbys","hobby’s","hobbies"], a:1, u:"Medeklinker + y: ’s."},
+  {lab:"meervoud", q:"Het meervoud van ‘knie’ is …", o:["knieën","kniën","knies"], a:0, u:"Klemtoon op -ie: -ieën."},
+  {lab:"verkleinwoorden", q:"Het verkleinwoord van ‘auto’ is …", o:["auto’tje","autootje","autotje"], a:1, u:"Lange klinker op het einde: dubbel schrijven."},
+  {lab:"woordenbouwen", q:"‘Het … bedraagt 100 euro.’", o:["te kort","tekort","te-kort"], a:1, u:"Het zelfstandig naamwoord (een gebrek) schrijf je aaneen."},
+  {lab:"koppelteken", q:"Welke vorm is correct?", o:["autoongeval","autoöngeval","auto-ongeval"], a:2, u:"Klinkerbotsing in een samenstelling: koppelteken."},
+  {lab:"afkortingen", q:"Welke afkorting van ‘bijvoorbeeld’ is correct?", o:["b.v.","bv.","bv"], a:1, u:"Echte afkorting: één punt."},
+  {lab:"leestekens", q:"Welke zin is correct?", o:["Ik ben moe, maar ik ga toch mee.","Ik ben moe maar, ik ga toch mee.","Ik ben, moe maar ik ga toch mee."], a:0, col:true, u:"Komma voor ‘maar’."}
+];
+
+/* ---------------- LPD ---------------- */
+const LPD = [
+  ["LPD 12","De leerlingen passen inzicht in het taalsysteem toe ter ondersteuning van hun communicatieve handelingen.","Kern van de webapp: het orthografisch domein (spelling van frequente en laagfrequente woorden, hoofdletters, trema, koppelteken, apostrof) en de leestekens (punt, komma, vraagteken, uitroepteken, dubbelepunt, aanhalingsteken). Alle 8 labs, de eindbaas en het exit ticket."],
+  ["LPD 14","De leerlingen zetten doelgericht strategieën in ter ondersteuning van informatieverwerking en communicatieve handelingen.","Talige hulpmiddelen gebruiken (de Spelbrood-brochure, de Woordenlijst, de site van Taaladvies), de eigen tekst nakijken: ‘Zoek het zelf op’ per lab, Spelbrood-regelnummers, eindbaas en de reflectievraag in het exit ticket."],
+  ["LPD 4","De leerlingen spreken en schrijven doelgericht (minimumvereisten).","Aandacht voor correctheid en Standaardnederlands (spelling en interpunctie) in functionele teksten: verbetermails in de eindbaas."],
+  ["LPD 6","De leerlingen nemen doelgericht deel aan mondelinge en schriftelijke interactie.","Schriftelijke interactie (mail aan een werkgever, bericht aan een klant, post op sociale media) in de eindbaas en de fout-zoeker van lab 1."],
+  ["LPD 11","De leerlingen passen inzicht in taalgebruik toe ter ondersteuning van hun communicatieve handelingen.","Conventies van tekstsoorten: aanhef en slot van een mail, aanspreekvormen (lab 1, eindbaas)."]
+];
+const LPD_NOT = "Niet gedekt (bewust, want dit is een spellingmodule): LPD 1, 2, 3, 5, 7+, 8, 9, 10 en 13. LPD 13 kan je licht meenemen door laagfrequente woorden uit de oefeningen te bespreken.";
+
+/* =========================================================
+   STATE
+   ========================================================= */
+const KEY = "spellinglab-v1";
+function load(){ try{ return JSON.parse(localStorage.getItem(KEY)) || {}; }catch(e){ return {}; } }
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
+let S = Object.assign({xp:0, done:{}, self:{}, refl:"", name:""}, load());
+
+const LEVELS = [[0,"Leerling-speurder"],[300,"Spellingspeurder"],[800,"Inspecteur"],[1400,"Hoofdinspecteur"],[2000,"Spellinglegende"]];
+function updateHeader(){
+  let lvl = LEVELS[0], next = null;
+  for(let i=0;i<LEVELS.length;i++){ if(S.xp >= LEVELS[i][0]){ lvl = LEVELS[i]; next = LEVELS[i+1]||null; } }
+  document.getElementById("lvl").textContent = lvl[1];
+  document.getElementById("xpnum").textContent = S.xp + " XP";
+  const pct = next ? Math.round((S.xp-lvl[0])/(next[0]-lvl[0])*100) : 100;
+  document.getElementById("xpbar").style.width = Math.min(100,pct) + "%";
+}
+function award(key, score, max){
+  const prev = S.done[key];
+  if(!prev || score > prev.score){
+    S.xp += (score - (prev ? prev.score : 0)) * 10;
+    S.done[key] = {score:score, max:max};
+    save();
+  } else if(prev && prev.max !== max){ prev.max = max; save(); }
+  updateHeader();
+}
+function labProgress(lab){
+  let d = 0;
+  lab.ex.forEach((e,i)=>{ if(S.done[lab.id+"-"+i]) d++; });
+  return {done:d, total:lab.ex.length};
+}
+
+/* =========================================================
+   HELPERS
+   ========================================================= */
+const app = document.getElementById("app");
+function h(tag, attrs, html){
+  const e = document.createElement(tag);
+  if(attrs) for(const k in attrs){ if(k==="class") e.className = attrs[k]; else e.setAttribute(k, attrs[k]); }
+  if(html !== undefined) e.innerHTML = html;
+  return e;
+}
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+function norm(s){ return String(s).replace(/[‘’`´']/g,"’").replace(/\s+/g," ").trim(); }
+function shuffle(a){ a = a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function confetti(){
+  if(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const cols = ["#ff6b5b","#f2b134","#2fbf8f","#3d9be9","#8c7cf0","#ef6fa0"];
+  for(let i=0;i<46;i++){
+    const c = h("span",{class:"conf"});
+    c.style.left = Math.random()*100 + "vw";
+    c.style.background = cols[i%cols.length];
+    c.style.animationDelay = (Math.random()*.4) + "s";
+    c.style.animationDuration = (1.2 + Math.random()*.9) + "s";
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(), 2600);
+  }
+}
+function showResult(box, score, max){
+  const pct = max ? score/max : 0;
+  box.className = "result show " + (pct >= .8 ? "good" : pct >= .5 ? "mid" : "low");
+  const msg = pct === 1 ? "Perfect! Zaak opgelost, speurder. 🕵️" :
+              pct >= .8 ? "Sterk werk! Bekijk de enkele fouten nog even." :
+              pct >= .5 ? "Op de goede weg. Herlees de regelkaarten en probeer opnieuw." :
+                          "Nog even oefenen: bekijk de regelkaarten en zoek de regel op in de Spelbrood-brochure.";
+  box.innerHTML = (pct >= .8 ? '<span class="stampx">Opgelost!</span>' : "") +
+    "Score: " + score + " / " + max + " · +" + (score*10) + " XP<br><span style='font-weight:600'>" + msg + "</span>";
+  if(pct >= .8) confetti();
+}
+function letop(t){ return t ? '<div class="letop">' + t + "</div>" : ""; }
+
+/* =========================================================
+   EXERCISE RENDERERS
+   ========================================================= */
+const TYPE_LABEL = {mc:"Meerkeuze", sort:"Sorteren", match:"Matching", gap:"Gap fill", choice:"Kies in de tekst", spot:"Fout-zoeker"};
+
+function renderExercise(ex, key, n){
+  const panel = h("div",{class:"card ex-panel", id:"ex-"+key});
+  const prev = S.done[key];
+  panel.innerHTML =
+    '<div class="ex-head"><div><span class="type">' + (n ? "Oefening " + n + " · " : "") + TYPE_LABEL[ex.type] + '</span>' +
+    '<h3 style="margin-top:10px">' + ex.title + '</h3>' +
+    (ex.src ? '<div class="src">' + ex.src + '</div>' : "") + '</div>' +
+    '<div class="score">' + (prev ? "Beste score: " + prev.score + " / " + prev.max + " ✔️" : "") + '</div></div>' +
+    '<p class="instr">' + ex.instr + '</p>';
+  const body = h("div");
+  panel.appendChild(body);
+  const result = h("div",{class:"result", role:"status", "aria-live":"polite"});
+  const restart = ()=>{ const fresh = renderExercise(ex, key, n); panel.replaceWith(fresh); };
+  ({mc:mcEx, sort:sortEx, match:matchEx, gap:gapEx, choice:choiceEx, spot:spotEx})[ex.type](ex, key, body, result, restart);
+  panel.appendChild(result);
+  return panel;
+}
+function footer(onCheck, restart){
+  const f = h("div",{class:"ex-foot"});
+  const c = h("button",{class:"btn dark", type:"button"},"✔ Controleer");
+  const r = h("button",{class:"btn small", type:"button"},"↺ Opnieuw");
+  c.onclick = ()=>{ onCheck(); c.disabled = true; c.style.opacity=.5; };
+  r.onclick = restart;
+  f.append(c, r);
+  return f;
+}
+
+/* --- multiple choice (immediate feedback) --- */
+function mcEx(ex, key, body, result, restart, onDone){
+  let answered = 0, score = 0;
+  const total = ex.items.length;
+  ex.items.forEach((it, qi)=>{
+    const q = h("div",{class:"mcq"});
+    if(it.q) q.appendChild(h("div",{class:"q"}, (qi+1) + ". " + it.q));
+    else q.appendChild(h("div",{class:"q"}, (qi+1) + "."));
+    const opts = h("div",{class:"opts" + (it.col ? " col" : "")});
+    const order = it.keep ? it.o.map((_,i)=>i) : shuffle(it.o.map((_,i)=>i));
+    const fb = h("div",{class:"fb"});
+    const buttons = [];
+    order.forEach(oi=>{
+      const b = h("button",{class:"opt", type:"button"}, esc(it.o[oi]));
+      b.dataset.i = oi;
+      b.onclick = ()=>{
+        const ok = oi === it.a;
+        buttons.forEach(x=>{ x.disabled = true; if(+x.dataset.i === it.a) x.classList.add("right"); });
+        if(!ok) b.classList.add("wrong");
+        fb.className = "fb show" + (ok ? "" : " no");
+        fb.innerHTML = (ok ? "✅ Juist! " : "❌ Niet juist. ") + (it.u || "") + letop(it.let);
+        answered++; if(ok) score++;
+        if(answered === total){
+          if(onDone) onDone(score, total);
+          else { award(key, score, total); showResult(result, score, total); }
+        }
+      };
+      buttons.push(b); opts.appendChild(b);
+    });
+    q.append(opts, fb);
+    body.appendChild(q);
+  });
+  if(restart && !onDone){
+    const f = h("div",{class:"ex-foot"});
+    const r = h("button",{class:"btn small", type:"button"},"↺ Opnieuw");
+    r.onclick = restart; f.appendChild(r); body.appendChild(f);
+  }
+}
+
+/* --- sort (tap or drag) --- */
+function sortEx(ex, key, body, result, restart){
+  let selected = null;
+  const pool = h("div",{class:"pool", "aria-label":"Woorden om te sorteren"});
+  const chips = shuffle(ex.items).map(it=>{
+    const c = h("span",{class:"chip", draggable:"true", tabindex:"0", role:"button"}, esc(it.w));
+    c._it = it;
+    const pick = (e)=>{ e.stopPropagation(); if(selected===c){ c.classList.remove("sel"); selected=null; return; }
+      if(selected) selected.classList.remove("sel"); selected = c; c.classList.add("sel"); };
+    c.onclick = pick;
+    c.onkeydown = (e)=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); pick(e); } };
+    c.ondragstart = (e)=>{ selected = c; e.dataTransfer.setData("text/plain","x"); };
+    pool.appendChild(c);
+    return c;
+  });
+  const bwrap = h("div",{class:"buckets"});
+  const buckets = ex.cats.map(cat=>{
+    const b = h("div",{class:"bucket", tabindex:"0", role:"button", "aria-label":"Vak " + cat.label});
+    b.innerHTML = "<h4>" + cat.label + "</h4>";
+    const inn = h("div",{class:"in"}); b.appendChild(inn);
+    b._cat = cat.id;
+    const drop = ()=>{ if(!selected) return; inn.appendChild(selected); selected.classList.remove("sel"); selected = null; };
+    b.onclick = drop;
+    b.onkeydown = (e)=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); drop(); } };
+    b.ondragover = (e)=>{ e.preventDefault(); b.classList.add("hot"); };
+    b.ondragleave = ()=> b.classList.remove("hot");
+    b.ondrop = (e)=>{ e.preventDefault(); b.classList.remove("hot"); drop(); };
+    bwrap.appendChild(b);
+    return b;
+  });
+  pool.onclick = ()=>{ if(selected && selected.parentNode !== pool){ pool.appendChild(selected); selected.classList.remove("sel"); selected=null; } };
+  pool.ondragover = (e)=>e.preventDefault();
+  pool.ondrop = (e)=>{ e.preventDefault(); if(selected){ pool.appendChild(selected); selected.classList.remove("sel"); selected=null; } };
+  body.append(pool, bwrap);
+  const notes = h("div");
+  body.appendChild(footer(()=>{
+    let score = 0; const lets = [];
+    chips.forEach(c=>{
+      const it = c._it; const inBucket = c.parentNode && c.parentNode.parentNode && c.parentNode.parentNode._cat;
+      const ok = inBucket === it.c;
+      if(ok) score++;
+      c.classList.add(ok ? "ok" : "no");
+      c.setAttribute("draggable","false"); c.onclick = null;
+      const catLabel = ex.cats.find(x=>x.id===it.c).label;
+      if(it.fix) c.innerHTML = esc(it.w) + "<small>" + (ok ? "✔ " : "→ ") + esc(it.fix) + (ok ? "" : " · " + esc(catLabel)) + "</small>";
+      else if(!ok) c.innerHTML = esc(it.w) + "<small>→ " + esc(catLabel) + "</small>";
+      if(it.let) lets.push(it.let);
+    });
+    notes.innerHTML = lets.map(letop).join("");
+    award(key, score, chips.length); showResult(result, score, chips.length);
+  }, restart));
+  body.appendChild(notes);
+}
+
+/* --- match --- */
+function matchEx(ex, key, body, result, restart){
+  const wrap = h("div",{class:"match"});
+  const L = h("div",{class:"mcol"}), R = h("div",{class:"mcol"});
+  const pairs = {}; // leftIndex -> rightIndex
+  let selL = null;
+  const lefts = ex.pairs.map((p,i)=>{
+    const b = h("button",{class:"mitem", type:"button"}, '<span class="dot"></span>' + esc(p.l));
+    b._i = i;
+    b.onclick = ()=>{ lefts.forEach(x=>x.classList.remove("sel")); if(pairs[i]!==undefined){ delete pairs[i]; paint(); } selL = i; b.classList.add("sel"); };
+    L.appendChild(b); return b;
+  });
+  const rorder = shuffle(ex.pairs.map((_,i)=>i));
+  const rights = [];
+  rorder.forEach(ri=>{
+    const b = h("button",{class:"mitem", type:"button"}, '<span class="dot"></span>' + esc(ex.pairs[ri].r));
+    b._i = ri;
+    b.onclick = ()=>{
+      if(selL === null) return;
+      for(const k in pairs){ if(pairs[k] === ri) delete pairs[k]; }
+      pairs[selL] = ri; selL = null; lefts.forEach(x=>x.classList.remove("sel")); paint();
+    };
+    R.appendChild(b); rights.push(b);
+  });
+  const cols = ["#ff6b5b","#f2b134","#2fbf8f","#3d9be9","#8c7cf0","#ef6fa0","#19b5b0","#f08a24","#b5651d","#6c7a89"];
+  function paint(){
+    lefts.forEach((b,i)=>{ const d=b.querySelector(".dot"); if(pairs[i]!==undefined){ d.textContent = i+1; d.style.background = cols[i%cols.length]; } else { d.textContent=""; d.style.background="#fff"; } });
+    rights.forEach(b=>{ const d=b.querySelector(".dot"); let li=null; for(const k in pairs){ if(pairs[k]===b._i) li=+k; } if(li!==null){ d.textContent = li+1; d.style.background = cols[li%cols.length]; } else { d.textContent=""; d.style.background="#fff"; } });
+  }
+  wrap.append(L, R);
+  body.appendChild(wrap);
+  body.appendChild(footer(()=>{
+    let score = 0;
+    lefts.forEach((b,i)=>{
+      const ok = pairs[i] === i;
+      if(ok) score++;
+      b.classList.add(ok ? "ok" : "no"); b.disabled = true;
+      if(!ok) b.insertAdjacentHTML("beforeend", ' <small style="color:var(--ok);font-weight:800">→ ' + esc(ex.pairs[i].r) + "</small>");
+    });
+    rights.forEach(b=>b.disabled = true);
+    award(key, score, ex.pairs.length); showResult(result, score, ex.pairs.length);
+  }, restart));
+}
+
+/* --- gap fill (typing) --- */
+function gapEx(ex, key, body, result, restart){
+  const box = h("div",{class:"gaptext"});
+  const inputs = [];
+  const src = ex.lines ? ex.lines : [ex.text];
+  src.forEach(line=>{
+    const span = h("span",{class: ex.lines ? "line" : ""});
+    line.split(/(\{\{.+?\}\})/).forEach(part=>{
+      const m = part.match(/^\{\{(.+)\}\}$/);
+      if(m){
+        const answers = m[1].split("|");
+        const inp = h("input",{type:"text", autocomplete:"off", autocapitalize:"off", spellcheck:"false", "aria-label":"invulvak"});
+        inp.style.width = Math.max(5, answers[0].length + 2) + "ch";
+        inp._ans = answers;
+        inp.onkeydown = (e)=>{ if(e.key==="Enter"){ const i = inputs.indexOf(inp); if(inputs[i+1]) inputs[i+1].focus(); } };
+        inputs.push(inp); span.appendChild(inp);
+      } else span.appendChild(document.createTextNode(part));
+    });
+    box.appendChild(span);
+  });
+  body.appendChild(box);
+  body.appendChild(footer(()=>{
+    let score = 0;
+    inputs.forEach(inp=>{
+      const ok = inp._ans.some(a=>norm(a) === norm(inp.value));
+      if(ok) score++;
+      inp.classList.add(ok ? "ok" : "no"); inp.readOnly = true;
+      if(!ok) inp.insertAdjacentHTML("afterend", '<span class="sol">' + esc(inp._ans[0]) + "</span>");
+    });
+    if(ex.let) body.insertAdjacentHTML("beforeend", letop(ex.let));
+    award(key, score, inputs.length); showResult(result, score, inputs.length);
+  }, restart));
+}
+
+/* --- choice (select in text) --- */
+function choiceEx(ex, key, body, result, restart){
+  const box = h("div",{class:"gaptext"});
+  const sels = [];
+  const src = ex.lines ? ex.lines : [ex.text];
+  src.forEach(line=>{
+    const span = h("span",{class: ex.lines ? "line" : ""});
+    line.split(/(\[\[.+?\]\])/).forEach(part=>{
+      const m = part.match(/^\[\[(.+)\]\]$/);
+      if(m){
+        const opts = m[1].split("|");
+        const sel = h("select",{"aria-label":"kies"});
+        sel.appendChild(h("option",{value:""},"…"));
+        sel._ok = [];
+        opts.forEach((o,i)=>{
+          const correct = o.startsWith("*"); const txt = o.replace(/^\*/,"");
+          const label = txt === "_" ? "(niets)" : txt;
+          const op = h("option",{value:String(i)}, esc(label));
+          sel.appendChild(op);
+          if(correct) sel._ok.push(String(i));
+          if(correct) sel._sol = label;
+        });
+        sels.push(sel); span.appendChild(sel);
+      } else span.appendChild(document.createTextNode(part));
+    });
+    box.appendChild(span);
+  });
+  body.appendChild(box);
+  body.appendChild(footer(()=>{
+    let score = 0;
+    sels.forEach(s=>{
+      const ok = s._ok.includes(s.value);
+      if(ok) score++;
+      s.classList.add(ok ? "ok" : "no"); s.disabled = true;
+      if(!ok) s.insertAdjacentHTML("afterend", '<span class="sol">' + esc(s._sol) + "</span>");
+    });
+    award(key, score, sels.length); showResult(result, score, sels.length);
+  }, restart));
+}
+
+/* --- spot the error --- */
+function spotEx(ex, key, body, result, restart){
+  const box = h("div",{class:"spot"});
+  if(ex.head) box.appendChild(h("div",{class:"mailhead"}, esc(ex.head)));
+  const toks = [];
+  let errors = 0;
+  const re = /\{([^|}]+)\|([^}]+)\}([^\s{]*)|\n|[^\s{]+/g;
+  let m;
+  while((m = re.exec(ex.text)) !== null){
+    if(m[0] === "\n"){ box.appendChild(h("br")); continue; }
+    const t = h("span",{class:"tok", role:"button", tabindex:"0"});
+    if(m[1]){ t.textContent = m[1]; t._fix = m[2]; errors++; } else t.textContent = m[0];
+    const tog = ()=>{ if(t._locked) return; t.classList.toggle("mark"); };
+    t.onclick = tog;
+    t.onkeydown = (e)=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); tog(); } };
+    box.appendChild(t);
+    if(m[1] && m[3]) box.appendChild(document.createTextNode(m[3]));
+    box.appendChild(document.createTextNode(" "));
+    toks.push(t);
+  }
+  body.appendChild(h("p",{class:"muted", style:"font-weight:700"}, "🔎 Er zitten <b>" + errors + "</b> fouten in deze tekst."));
+  body.appendChild(box);
+  body.appendChild(footer(()=>{
+    let hits = 0, fp = 0;
+    toks.forEach(t=>{
+      t._locked = true;
+      const marked = t.classList.contains("mark");
+      t.classList.remove("mark");
+      if(t._fix){
+        if(marked){ hits++; t.classList.add("hit"); } else t.classList.add("miss");
+        t.insertAdjacentHTML("beforeend", '<span class="fix">→ ' + esc(t._fix) + "</span>");
+      } else if(marked){ fp++; t.classList.add("fp"); }
+    });
+    const score = Math.max(0, hits - fp);
+    if(fp) body.insertAdjacentHTML("beforeend", '<p class="muted">Groen = gevonden · oranje = gemist · doorstreept = was eigenlijk juist (' + fp + " × −1)</p>");
+    else body.insertAdjacentHTML("beforeend", '<p class="muted">Groen = gevonden · oranje = gemist</p>');
+    award(key, score, errors); showResult(result, score, errors);
+  }, restart));
+}
+
+/* =========================================================
+   VIEWS
+   ========================================================= */
+function bronCards(){
+  return '<div class="grid bronnen">' +
+    '<a class="card bron" href="' + LINKS.regels + '" target="_blank" rel="noopener"><span class="pill">🌐 Team Taaladvies</span><h3>Spellingregels</h3><p class="muted">Alle spellingregels van de Vlaamse overheid, per onderwerp, met voorbeelden. Ook de leestekens staan hier.</p><span class="go">Open de regels →</span></a>' +
+    '<a class="card bron" href="' + LINKS.publicaties + '" target="_blank" rel="noopener"><span class="pill">📘 Spel(d/t)brood?</span><h3>Publicaties</h3><p class="muted">Hier vind je de brochure <em>Spel(d/t)brood? De regels op een rij</em>. De regelnummers in deze app verwijzen ernaar.</p><span class="go">Naar de publicaties →</span></a>' +
+    '<a class="card bron" href="' + LINKS.woordenlijst + '" target="_blank" rel="noopener"><span class="pill">📗 Groene Boekje</span><h3>Woordenlijst</h3><p class="muted">Twijfel je over één woord? De officiële Woordenlijst Nederlandse Taal geeft het juiste antwoord.</p><span class="go">Zoek een woord →</span></a>' +
+  '</div>';
+}
+
+function viewHome(){
+  const doneLabs = LABS.filter(l=>{ const p=labProgress(l); return p.done===p.total; }).length;
+  app.innerHTML =
+  '<section class="hero"><div class="wrap hero-grid">' +
+    '<div><span class="kicker">Nederlands · 3de graad · algemene spelling</span>' +
+    '<h1>Word een <em>spellingspeurder</em>.</h1>' +
+    '<p style="font-size:1.12rem;max-width:560px">Hoofdletter of niet? <b>Lucas’</b> of <b>Lucas’s</b>? <b>Te kort</b> of <b>tekort</b>? In acht labs leer je de regels, zoek je ze zelf op en los je zaken op. Op het einde wacht de eindbaas, en met het exit ticket bewijs je dat je de kern beheerst.</p>' +
+    '<div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:14px"><a class="btn dark" href="#lab-hoofdletters">Start met lab 1 →</a><a class="btn" href="#labs">Bekijk alle labs</a></div>' +
+    '<p class="muted" style="margin-top:14px;font-size:.92rem">🏅 ' + doneLabs + ' van de 8 labs afgerond · ' + S.xp + ' XP verzameld</p></div>' +
+    '<div class="mission"><span class="stamp">GEEN<br>werkwoord-<br>spelling</span><h3>Jouw missie</h3>' +
+      '<ul><li>Je begrijpt de algemene spellingregels: hoofdletters, woorden bouwen, meervoud, verkleinwoorden, bezitsvorm, woordtekens, afkortingen en leestekens.</li>' +
+      '<li>Je past die regels toe in je eigen teksten: mails, verslagen, berichten en scripties.</li>' +
+      '<li>Je zoekt een regel zelf op in de officiële bronnen als je twijfelt.</li></ul></div>' +
+  '</div></section>' +
+
+  '<section class="block" style="padding-top:10px"><div class="wrap"><div class="grid steps">' +
+    '<div class="card step"><div class="n">1</div><h3>Lees de regelkaarten</h3><p class="muted">Elke kaart geeft de regel, voorbeelden en de ‘maar’ waar je over struikelt.</p></div>' +
+    '<div class="card step"><div class="n">2</div><h3>Zoek het zelf op</h3><p class="muted">Bij elke regel staat het nummer uit de brochure <em>Spel(d/t)brood?</em> en een opzoekopdracht.</p></div>' +
+    '<div class="card step"><div class="n">3</div><h3>Oefen en verdien XP</h3><p class="muted">Gap fills, matching, sorteren, meerkeuze en fout-zoekers. Elk juist antwoord levert 10 XP op.</p></div>' +
+  '</div></div></section>' +
+
+  '<section class="block" id="labs-anchor"><div class="wrap"><span class="kicker">De labs</span><h2>Kies een lab</h2>' +
+    '<div class="grid labgrid" id="labgrid"></div>' +
+    '<div class="grid special" style="margin-top:22px">' +
+      '<a class="card labcard" href="#eindbaas" style="--acc:#1b2340;background:#1b2340;color:#fff"><div class="top"><div class="icon" style="background:#ff6b5b">👾</div><div class="num" style="color:#fff">★</div></div><h3>Eindbaas: verbeter de mail</h3><div class="sub" style="color:#cfd3e2">Drie echte teksten met fouten uit alle labs door elkaar.</div></a>' +
+      '<a class="card labcard" href="#exit" style="--acc:#f2b134;background:#fff4d6"><div class="top"><div class="icon">🎟️</div><div class="num">✓</div></div><h3>Exit ticket</h3><div class="sub">10 kernvragen, je zelfinschatting en je resultaatkaart.</div></a>' +
+    '</div></div></section>' +
+
+  '<section class="block"><div class="wrap"><span class="kicker">Zelf op zoek</span><h2>Twijfel? Zoek het op.</h2><p class="muted" style="max-width:720px">Ook schrijvers en journalisten zoeken regels op. Deze drie bronnen zijn officieel. Gebruik ze bij elke opdracht en ook later, als je mails of verslagen schrijft.</p>' + bronCards() + '</div></section>';
+
+  const grid = document.getElementById("labgrid");
+  LABS.forEach(l=>{
+    const p = labProgress(l);
+    const a = h("a",{class:"card labcard", href:"#lab-"+l.id, style:"--acc:"+l.color});
+    a.innerHTML = '<div class="top"><div class="icon">' + l.icon + '</div><div class="num">' + l.nr + '</div></div>' +
+      '<h3>' + l.title + '</h3><div class="sub">' + l.sub + '</div>' +
+      '<div class="muted" style="font-size:.8rem;font-weight:700">' + p.done + ' / ' + p.total + ' oefeningen</div>' +
+      '<div class="prog"><i style="width:' + Math.round(p.done/p.total*100) + '%"></i></div>' +
+      (p.done === p.total ? '<span class="badge-done" title="Lab afgerond">🏅</span>' : "");
+    grid.appendChild(a);
+  });
+}
+
+function viewLab(id){
+  const idx = LABS.findIndex(l=>l.id===id);
+  if(idx < 0){ location.hash = "#home"; return; }
+  const l = LABS[idx];
+  document.documentElement.style.setProperty("--acc", l.color);
+  app.innerHTML =
+  '<section class="labhero" style="--acc:' + l.color + '"><div class="wrap">' +
+    '<a class="crumb" href="#labs">← Alle labs</a>' +
+    '<h1>' + l.icon + ' Lab ' + l.nr + ': ' + l.title + '</h1>' +
+    '<p class="lead">' + l.lead + '</p>' +
+    '<div class="subnav"><a class="btn small" href="#lab-' + l.id + '" data-jump="regels">📋 Regels</a><a class="btn small" href="#lab-' + l.id + '" data-jump="zoek">🔎 Zoek het op</a><a class="btn small" href="#lab-' + l.id + '" data-jump="oefen">✏️ Oefeningen</a>' +
+    '<span class="spb">📘 Spelbrood: ' + l.spelbrood + '</span></div>' +
+    '<div class="bignum">' + l.nr + '</div>' +
+  '</div></section>' +
+  '<section class="block" id="regels" style="--acc:' + l.color + '"><div class="wrap"><span class="kicker">Regelkaarten</span><h2>De regels op een rij</h2><div class="grid rules" id="rules" style="margin-top:22px"></div></div></section>' +
+  '<section class="block" id="zoek" style="padding-top:0"><div class="wrap"><div class="zoek"><div class="lens">🔍</div><div><h3>Zoek het zelf op</h3><p>' + l.zoek.q + '</p><div class="links" id="zoeklinks"></div></div></div></div></section>' +
+  '<section class="block" id="oefen" style="padding-top:0;--acc:' + l.color + '"><div class="wrap"><span class="kicker">Oefenen</span><h2>Aan de slag</h2><div id="exs"></div>' +
+    '<div class="labnav" id="labnav"></div></div></section>';
+
+  const rules = document.getElementById("rules");
+  l.cards.forEach((c,i)=>{
+    const d = h("div",{class:"card rule"});
+    d.innerHTML = '<span class="tag">' + (i+1) + ". " + c.t + '</span><p style="font-weight:700">' + c.r + '</p><div class="ex">' + c.ex + '</div>' + (c.m ? '<div class="maar">' + c.m + '</div>' : "");
+    rules.appendChild(d);
+  });
+  const zl = document.getElementById("zoeklinks");
+  const names = {regels:"🌐 Spellingregels", publicaties:"📘 Spel(d/t)brood? (Publicaties)", woordenlijst:"📗 Woordenlijst"};
+  l.zoek.links.forEach(k=> zl.appendChild(h("a",{class:"btn small", href:LINKS[k], target:"_blank", rel:"noopener"}, names[k])));
+  const exs = document.getElementById("exs");
+  l.ex.forEach((ex,i)=> exs.appendChild(renderExercise(ex, l.id+"-"+i, i+1)));
+  const nav = document.getElementById("labnav");
+  nav.innerHTML = (idx>0 ? '<a class="btn" href="#lab-' + LABS[idx-1].id + '">← Lab ' + LABS[idx-1].nr + ': ' + LABS[idx-1].title + '</a>' : '<span></span>') +
+    (idx<LABS.length-1 ? '<a class="btn dark" href="#lab-' + LABS[idx+1].id + '">Lab ' + LABS[idx+1].nr + ': ' + LABS[idx+1].title + ' →</a>' : '<a class="btn dark" href="#eindbaas">Naar de eindbaas 👾 →</a>');
+  app.querySelectorAll("[data-jump]").forEach(a=> a.onclick = (e)=>{ e.preventDefault(); document.getElementById(a.dataset.jump).scrollIntoView({behavior:"smooth"}); });
+}
+
+function viewBoss(){
+  document.documentElement.style.setProperty("--acc", "#ff6b5b");
+  app.innerHTML =
+  '<section class="labhero" style="--acc:#ff6b5b"><div class="wrap"><a class="crumb" href="#home">← Start</a>' +
+  '<h1>👾 Eindbaas: verbeter de mail</h1><p class="lead">Drie echte teksten, met fouten uit alle labs door elkaar: hoofdletters, meervoud, verkleinwoorden, bezitsvorm, koppelteken, trema en leestekens. Klik op elk fout woord. Pas op: een juist woord aanklikken kost een punt.</p><div class="bignum">★</div></div></section>' +
+  '<section class="block" style="--acc:#ff6b5b"><div class="wrap" id="boss"></div></section>';
+  const w = document.getElementById("boss");
+  BOSS.forEach((b,i)=>{
+    w.appendChild(renderExercise({type:"spot", title:b.title, instr:"Klik op de fouten en klik dan op Controleer.", head:b.head, text:b.text}, "boss-"+i, i+1));
+  });
+  w.insertAdjacentHTML("beforeend", '<div class="labnav"><a class="btn" href="#labs">← Terug naar de labs</a><a class="btn dark" href="#exit">Naar het exit ticket 🎟️ →</a></div>');
+}
+
+function viewExit(){
+  document.documentElement.style.setProperty("--acc", "#f2b134");
+  app.innerHTML =
+  '<section class="labhero" style="--acc:#f2b134"><div class="wrap"><a class="crumb" href="#home">← Start</a>' +
+  '<h1>🎟️ Exit ticket</h1><p class="lead">Tien kernvragen, één per kernregel. Daarna schat je jezelf in en schrijf je één reflectiezin. Op het einde krijg je een resultaatkaart die je kunt kopiëren of als screenshot in Teams kunt plaatsen.</p><div class="bignum">✓</div></div></section>' +
+  '<section class="block" style="--acc:#f2b134"><div class="wrap" style="max-width:860px">' +
+    '<div class="card" style="margin-bottom:20px"><label for="nm"><b>Je naam</b></label><input class="txt" id="nm" placeholder="Voornaam en naam" value="' + esc(S.name||"") + '"></div>' +
+    '<div class="card ex-panel" id="exitq"><div class="ex-head"><div><span class="type">Deel 1 · Kernvragen</span><h3 style="margin-top:10px">Tien vragen</h3></div><div class="score" id="exitscore"></div></div><p class="instr">Je kunt elke vraag maar één keer beantwoorden. Denk dus goed na.</p><div id="exitbody"></div></div>' +
+    '<div class="card ex-panel"><span class="type" style="font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;background:var(--acc);border:2px solid var(--ink);border-radius:8px;padding:2px 8px">Deel 2 · Zelfinschatting</span><h3 style="margin-top:10px">Hoe goed beheers je elk lab?</h3><p class="instr">😟 nog moeilijk · 😐 lukt meestal · 😎 beheers ik</p><div class="self" id="self"></div></div>' +
+    '<div class="card ex-panel"><span class="type" style="font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;background:var(--acc);border:2px solid var(--ink);border-radius:8px;padding:2px 8px">Deel 3 · Reflectie</span><h3 style="margin-top:10px">Welke regel ga jij voortaan opzoeken voor je een mail of tekst indient, en waar zoek je hem op?</h3><textarea id="refl" rows="3" placeholder="Bv. Ik twijfel vaak over … Ik zoek dat op in …">' + esc(S.refl||"") + '</textarea></div>' +
+    '<div style="margin:24px 0;display:flex;gap:12px;flex-wrap:wrap"><button class="btn dark" id="mk" type="button">🎟️ Toon mijn resultaatkaart</button></div>' +
+    '<div class="ticket" id="ticket"></div>' +
+  '</div></section>';
+
+  const exitAns = {};
+  const body = document.getElementById("exitbody");
+  const items = EXIT.map(e=>Object.assign({}, e));
+  // wrap mc to track per-question results
+  items.forEach((it, qi)=>{
+    const wrapper = {items:[it]};
+    const holder = h("div");
+    mcEx(wrapper, "exit-q"+qi, holder, null, null, (sc)=>{ exitAns[qi] = sc === 1; updExit(); });
+    holder.querySelector(".q").textContent = (qi+1) + ". " + it.q;
+    body.appendChild(holder);
+  });
+  function updExit(){
+    const n = Object.keys(exitAns).length, sc = Object.values(exitAns).filter(Boolean).length;
+    document.getElementById("exitscore").textContent = n + " / 10 beantwoord";
+    if(n === 10){ award("exit", sc, 10); }
+  }
+  const self = document.getElementById("self");
+  LABS.forEach(l=>{
+    const row = h("div",{class:"selfrow"});
+    row.innerHTML = '<span><b>' + l.icon + " " + l.title + '</b></span>';
+    const f = h("div",{class:"faces"});
+    ["😟","😐","😎"].forEach(face=>{
+      const b = h("button",{class:"face" + (S.self[l.id]===face ? " on" : ""), type:"button", "aria-label":face}, face);
+      b.onclick = ()=>{ S.self[l.id] = face; save(); f.querySelectorAll(".face").forEach(x=>x.classList.remove("on")); b.classList.add("on"); };
+      f.appendChild(b);
+    });
+    row.appendChild(f); self.appendChild(row);
+  });
+  document.getElementById("nm").oninput = (e)=>{ S.name = e.target.value; save(); };
+  document.getElementById("refl").oninput = (e)=>{ S.refl = e.target.value; save(); };
+  document.getElementById("mk").onclick = ()=>{
+    const n = Object.keys(exitAns).length;
+    const t = document.getElementById("ticket");
+    if(n < 10){ t.className = "ticket show"; t.innerHTML = '<div class="tb"><b>⚠️ Beantwoord eerst alle tien vragen (' + n + ' / 10).</b></div>'; return; }
+    const sc = Object.values(exitAns).filter(Boolean).length;
+    const werk = [...new Set(EXIT.filter((e,i)=>!exitAns[i]).map(e=>LABS.find(l=>l.id===e.lab).title))];
+    const date = new Date().toLocaleDateString("nl-BE",{day:"numeric",month:"long",year:"numeric"});
+    const selfTxt = LABS.map(l=> l.title + ": " + (S.self[l.id]||"–")).join(" · ");
+    const verdict = sc >= 9 ? "Kern beheerst ✅" : sc >= 7 ? "Bijna: herhaal je werkpunten 🔁" : "Herhaal de labs bij je werkpunten 📚";
+    t.className = "ticket show";
+    t.innerHTML =
+      '<div class="th"><b style="font-family:var(--serif);font-size:1.3rem">🎟️ Exit ticket · Spellinglab</b><span>' + date + '</span></div>' +
+      '<div class="tb"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;align-items:end"><div><div class="muted">Naam</div><b style="font-size:1.15rem">' + esc(S.name || "(geen naam ingevuld)") + '</b></div>' +
+      '<div style="text-align:right"><div class="bigscore">' + sc + '/10</div><b>' + verdict + '</b></div></div>' +
+      '<div class="perf"></div>' +
+      '<div><b>Werkpunten:</b> ' + (werk.length ? werk.join(", ") : "geen, proficiat!") + '</div>' +
+      '<div><b>Zelfinschatting:</b> <span class="muted">' + selfTxt + '</span></div>' +
+      '<div><b>Reflectie:</b> ' + (S.refl ? esc(S.refl) : '<span class="muted">(niet ingevuld)</span>') + '</div>' +
+      '<div class="muted" style="font-size:.85rem">Totaal verzamelde XP: ' + S.xp + ' · Labs afgerond: ' + LABS.filter(l=>{const p=labProgress(l);return p.done===p.total;}).length + ' / 8</div>' +
+      '<div><button class="btn small" id="copy" type="button">📋 Kopieer als tekst</button> <span id="copied" class="muted"></span></div></div>';
+    const plain = "Exit ticket Spellinglab – " + date + "\nNaam: " + (S.name||"") + "\nScore: " + sc + "/10 (" + verdict + ")\nWerkpunten: " + (werk.join(", ")||"geen") + "\nZelfinschatting: " + selfTxt + "\nReflectie: " + (S.refl||"") + "\nXP: " + S.xp;
+    document.getElementById("copy").onclick = ()=>{
+      const done = ()=>{ document.getElementById("copied").textContent = "Gekopieerd!"; };
+      try{ navigator.clipboard.writeText(plain).then(done, ()=>fallbackCopy(plain, done)); }catch(e){ fallbackCopy(plain, done); }
+    };
+    if(sc >= 8) confetti();
+    t.scrollIntoView({behavior:"smooth", block:"center"});
+  };
+}
+function fallbackCopy(txt, done){
+  const ta = h("textarea"); ta.value = txt; document.body.appendChild(ta); ta.select();
+  try{ document.execCommand("copy"); done(); }catch(e){} ta.remove();
+}
+
+function viewTeacher(){
+  document.documentElement.style.setProperty("--acc", "#3d9be9");
+  const lets = [];
+  LABS.forEach(l=> l.ex.forEach(ex=>{
+    if(ex.let) lets.push([l.title, ex.title, ex.let]);
+    (ex.items||[]).forEach(it=>{ if(it.let) lets.push([l.title, ex.title, it.let]); });
+  }));
+  app.innerHTML =
+  '<section class="labhero" style="--acc:#3d9be9"><div class="wrap"><a class="crumb" href="#home">← Start</a><h1>🧑‍🏫 Voor de leraar</h1><p class="lead">Leerplankoppeling, opbouw en verantwoording van de keuzes in deze webapp.</p></div></section>' +
+  '<section class="block"><div class="wrap">' +
+   '<span class="kicker">Leerplan III-Ned-da (D/2024/13.758/276)</span><h2>Gekoppelde leerplandoelen</h2>' +
+   '<div class="card tablewrap"><table><thead><tr><th>LPD</th><th>Leerplandoel</th><th>Waar in de webapp</th></tr></thead><tbody>' +
+   LPD.map(r=>'<tr><td><b>' + r[0] + '</b></td><td>' + r[1] + '</td><td>' + r[2] + '</td></tr>').join("") +
+   '</tbody></table><p class="muted" style="margin-top:12px">' + LPD_NOT + '</p>' +
+   '<p class="muted">Lexicon III-Ned-da, orthografisch domein: spelling van in te zetten woorden (frequent en laagfrequent), hoofdletters, diakritische tekens (trema, koppelteken, apostrof) en interpunctie (punt, komma, vraagteken, uitroepteken, dubbelepunt, spatie, aanhalingsteken).</p></div>' +
+  '</div></section>' +
+  '<section class="block" style="padding-top:0"><div class="wrap"><span class="kicker">Opbouw</span><h2>Lesverloop</h2><div class="grid steps">' +
+   '<div class="card"><h3>Zelfstandig</h3><p class="muted">Zoals in de bundel: opfrissing van vorige jaren, zelfstandig te verwerken. Leerlingen werken de 8 labs in hun eigen tempo af, de voortgang blijft bewaard in hun browser.</p></div>' +
+   '<div class="card"><h3>Bronnen</h3><p class="muted">Elke regelkaart verwijst naar de nummers in <em>Spel(d/t)brood?</em> (Team Taaladvies). De opzoekopdrachten trainen het gebruik van officiële hulpmiddelen (LPD 14).</p></div>' +
+   '<div class="card"><h3>Afsluiten</h3><p class="muted">De eindbaas toetst de transfer naar echte teksten, het exit ticket de kern. Laat de resultaatkaart als screenshot of tekst indienen in Teams.</p></div>' +
+  '</div></div></section>' +
+  '<section class="block" style="padding-top:0"><div class="wrap"><span class="kicker">Verantwoording</span><h2>Afwijkingen van de bundel of theoriegids</h2><p class="muted">Bij een tegenstrijdigheid volgt de app de officiële spelling (Spelbrood-brochure en Woordenlijst). Leerlingen zien bij de betrokken vraag een kadertje ‘Let op’.</p>' +
+   '<div class="card tablewrap"><table><thead><tr><th>Lab</th><th>Oefening</th><th>Toelichting</th></tr></thead><tbody>' +
+   lets.map(r=>'<tr><td>' + r[0] + '</td><td>' + r[1] + '</td><td>' + r[2] + '</td></tr>').join("") +
+   '<tr><td>Meervoud</td><td>Leeuwerikken of leeuweriken?</td><td>‘lemmet’ uit de bundel is weggelaten: de sleutel geeft ‘lemmetten’, terwijl de klemtoon op de eerste lettergreep ligt. Twee extra woorden (kabinet, monnik) en perzik zijn toegevoegd.</td></tr>' +
+   '<tr><td>Verkleinwoorden</td><td>De fietstocht</td><td>‘pralinetje’ is weggelaten, want zowel ‘pralinetje’ als ‘pralientje’ is correct (Spelbrood regel 66).</td></tr>' +
+   '</tbody></table></div>' +
+   '<p class="muted" style="margin-top:14px">De opdracht ‘Combineer de meervoudsvormen met de juiste regels’ (bundel, oef. 2) bevatte alleen de sleutel. De regels in de matchingoefening zijn opgesteld op basis van de theoriegids.</p>' +
+  '</div></section>' +
+  '<section class="block" style="padding-top:0"><div class="wrap"><h2>Bronnen</h2>' + bronCards() +
+  '<p class="muted" style="margin-top:16px"><button class="btn small" id="reset" type="button">🗑️ Wis de voortgang op dit toestel</button></p></div></section>';
+  document.getElementById("reset").onclick = ()=>{ if(confirm("Alle voortgang en XP op dit toestel wissen?")){ S = {xp:0, done:{}, self:{}, refl:"", name:""}; save(); updateHeader(); viewTeacher(); } };
+}
+
+/* =========================================================
+   ROUTER
+   ========================================================= */
+function route(){
+  const hsh = (location.hash || "#home").slice(1);
+  document.querySelectorAll("nav.main a").forEach(a=>a.classList.toggle("on", a.dataset.nav === hsh || (hsh.startsWith("lab-") && a.dataset.nav==="labs")));
+  document.documentElement.style.setProperty("--acc", "#ff6b5b");
+  if(hsh.startsWith("lab-")) viewLab(hsh.slice(4));
+  else if(hsh === "eindbaas") viewBoss();
+  else if(hsh === "exit") viewExit();
+  else if(hsh === "leraar") viewTeacher();
+  else { viewHome(); if(hsh === "labs"){ setTimeout(()=>{ const el = document.getElementById("labs-anchor"); if(el) el.scrollIntoView(); }, 0); return; } }
+  window.scrollTo(0,0);
+}
+window.addEventListener("hashchange", route);
+updateHeader();
+route();
+</script>
+</body>
+</html>
